@@ -4,7 +4,6 @@
  */
 package model;
 
-import java.math.BigDecimal;
 import java.util.List;
 import java.util.UUID;
 import javax.persistence.CascadeType;
@@ -21,47 +20,26 @@ import lombok.NoArgsConstructor;
 import lombok.ToString;
 
 @Entity
-@Table(name = "Laptop")
+@Table(name = "CuaHang")
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 @ToString
-public class Laptop {
+public class CuaHang {
     @Id
     @GeneratedValue
     @Column(name = "Id", columnDefinition = "UNIQUEIDENTIFIER DEFAULT NEWID()")
     private UUID id;
-    @Column(name = "Imei")
-    private String imei;
     @Column(name = "Ma")
     private String ma;
     @Column(name = "Ten")
     private String ten;
-    @Column(name = "Hang")
-    private String hang;
-    @Column(name = "CPU")
-    private String cpu;
-    @Column(name = "Ram")
-    private String ram;
-    @Column(name = "Ocung")
-    private String oCung;
-    @Column(name = "ManHinh")
-    private String manHinh;
-    @Column(name = "TheLoai")
-    private String theLoai;
-    @Column(name = "GiaNhap")
-    private BigDecimal giaNhap;
-    @Column(name = "GiaBan")
-    private BigDecimal giaBan;
-    @Column(name = "MoTa")
-    private String moTa;
-    @Column(name = "TrangThai")
-    private int trangThai;
-    @Column(name = "HinhAnh")
-    private String hinhAnh;
-   
-
-    @OneToMany(mappedBy = "laptop",
-            cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    private List<KhuyenMai> listKM;
+    @Column(name = "DiaChi")
+    private String diaChi;
+    @Column(name = "ThanhPho")
+    private String thanhPho;
+    @Column(name = "QuocGia")
+    private String quocGia;
+    @OneToMany(mappedBy = "cuaHang",cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private List<Userr> listUserr;
 }

@@ -5,6 +5,14 @@
 package hibernateConfig;
 
 import java.util.Properties;
+import model.BaoHanh;
+import model.CuaHang;
+import model.HoaDon;
+import model.HoaDonChiTiet;
+import model.KhachHang;
+import model.KhuyenMai;
+import model.Laptop;
+import model.Userr;
 import org.hibernate.SessionFactory;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.cfg.Environment;
@@ -30,18 +38,14 @@ public class HibernateConfig {
         //gen DB tự động
 //        properties.put(Environment.HBM2DDL_AUTO, "create");// tạo bảng trong sql
          
-//        conf.addAnnotatedClass(SanPham.class);
-//        conf.addAnnotatedClass(MauSac.class);
-//        conf.addAnnotatedClass(VGA.class);
-//        conf.addAnnotatedClass(CPU.class);
-//        conf.addAnnotatedClass(ChiTietSanPham.class);
-//        conf.addAnnotatedClass(KhuyenMai.class);
-//        conf.addAnnotatedClass(TheLoai.class);
-//        conf.addAnnotatedClass(ManHinh.class);
-//        conf.addAnnotatedClass(OCung.class);
-//        conf.addAnnotatedClass(Ram.class);
-        
-       
+        conf.addAnnotatedClass(Laptop.class);
+        conf.addAnnotatedClass(Userr.class);
+        conf.addAnnotatedClass(CuaHang.class);
+        conf.addAnnotatedClass(KhachHang.class);
+        conf.addAnnotatedClass(HoaDon.class);
+        conf.addAnnotatedClass(KhuyenMai.class);
+        conf.addAnnotatedClass(BaoHanh.class);
+        conf.addAnnotatedClass(HoaDonChiTiet.class);
 
 
         conf.setProperties(properties);

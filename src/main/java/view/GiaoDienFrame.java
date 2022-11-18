@@ -6,6 +6,7 @@ package view;
 
 import java.util.ArrayList;
 import java.util.List;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 
@@ -130,6 +131,11 @@ public class GiaoDienFrame extends javax.swing.JFrame {
         btnDangXuat.setBackground(new java.awt.Color(253, 254, 253));
         btnDangXuat.setIcon(new javax.swing.ImageIcon("D:\\ki 3\\java 3\\DuAn1_QuanLyBanLaptop\\src\\anh\\logout.png")); // NOI18N
         btnDangXuat.setText("Đăng xuất");
+        btnDangXuat.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDangXuatActionPerformed(evt);
+            }
+        });
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel2.setText("Nguyễn Đăng Cường");
@@ -233,6 +239,15 @@ public class GiaoDienFrame extends javax.swing.JFrame {
     private void btnThongKeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThongKeActionPerformed
        showJPanel(5);
     }//GEN-LAST:event_btnThongKeActionPerformed
+
+    private void btnDangXuatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDangXuatActionPerformed
+        int check = JOptionPane.showConfirmDialog(this, "bạn muốn đăng xuất không","thông báo",JOptionPane.YES_NO_OPTION);
+        if(check == JOptionPane.YES_OPTION){
+            this.dispose();
+            LoginFrame login = new LoginFrame();
+            login.setVisible(true);
+        }
+    }//GEN-LAST:event_btnDangXuatActionPerformed
 
     /**
      * @param args the command line arguments
