@@ -119,6 +119,9 @@
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="fd" green="fe" red="fd" type="rgb"/>
             </Property>
+            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+              <Image iconType="2" name="D:\ki 3\java 3\DuAn1_QuanLyBanLaptop\src\anh\thongKe.png"/>
+            </Property>
             <Property name="text" type="java.lang.String" value="Th&#x1ed1;ng k&#xea;"/>
           </Properties>
           <Events>
@@ -144,6 +147,9 @@
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="fd" green="fe" red="fd" type="rgb"/>
             </Property>
+            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+              <Image iconType="2" name="D:\ki 3\java 3\DuAn1_QuanLyBanLaptop\src\anh\laptop.png"/>
+            </Property>
             <Property name="text" type="java.lang.String" value="S&#x1ea3;n ph&#x1ea9;m"/>
           </Properties>
           <Events>
@@ -154,6 +160,9 @@
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="fd" green="fe" red="fd" type="rgb"/>
+            </Property>
+            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+              <Image iconType="2" name="D:\ki 3\java 3\DuAn1_QuanLyBanLaptop\src\anh\staff.png"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Nh&#xe2;n Vi&#xea;n"/>
           </Properties>
@@ -166,6 +175,9 @@
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="fd" green="fe" red="fd" type="rgb"/>
             </Property>
+            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+              <Image iconType="2" name="D:\ki 3\java 3\DuAn1_QuanLyBanLaptop\src\anh\khachHang.png"/>
+            </Property>
             <Property name="text" type="java.lang.String" value="Kh&#xe1;ch H&#xe0;ng"/>
           </Properties>
           <Events>
@@ -177,6 +189,9 @@
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="fd" green="fe" red="fd" type="rgb"/>
             </Property>
+            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+              <Image iconType="2" name="D:\ki 3\java 3\DuAn1_QuanLyBanLaptop\src\anh\giamGia.png"/>
+            </Property>
             <Property name="text" type="java.lang.String" value="khuy&#x1ebf;n m&#xe3;i"/>
           </Properties>
           <Events>
@@ -187,6 +202,9 @@
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="fd" green="fe" red="fd" type="rgb"/>
+            </Property>
+            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+              <Image iconType="2" name="D:\ki 3\java 3\DuAn1_QuanLyBanLaptop\src\anh\logout.png"/>
             </Property>
             <Property name="text" type="java.lang.String" value="&#x110;&#x103;ng xu&#x1ea5;t"/>
           </Properties>
