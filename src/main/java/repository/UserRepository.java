@@ -4,20 +4,81 @@
  */
 package repository;
 
+import hibernateConfig.HibernateConfig;
 import hibernateConfig.JdbcUltil;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.List;
+import javax.persistence.TypedQuery;
 import model.User;
+import model.Userr;
+import org.hibernate.Session;
+import org.hibernate.Transaction;
 
 /**
  *
  * @author dangc
  */
 public class UserRepository {
+    public List<Userr> selectAll() {
+        List<Userr> listUs;
+        try ( Session session = HibernateConfig.getFACTORY().openSession()) {
+            TypedQuery<Userr> query = session.createQuery("FROM Userr ");
+            listUs = query.getResultList();
+            session.close();
+        }
+        return listUs;
+    }
+   public Boolean addUserrRepo(Userr u) {
+        Transaction transaction = null;
+        boolean check = false;
+        try (Session session = HibernateConfig.getFACTORY().openSession()) {
+            transaction = session.beginTransaction();
+            session.save(u);
+            transaction.commit();
+            check = true;
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            transaction.rollback();
+        }
+        return check;
+    }
+   
+    
+    public Boolean updateUserrRepo(Userr u) {
+        Transaction transaction = null;
+        boolean check = false;
+        try (Session session = HibernateConfig.getFACTORY().openSession()) {
+            transaction = session.beginTransaction();
+             session.update(u);
+            transaction.commit();
+            check = true;
 
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            transaction.rollback();
+        }
+        return check;
+    }
+    public Boolean deleteUserrRepo(Userr u) {
+        Transaction transaction = null;
+        boolean check = false;
+        try (Session session = HibernateConfig.getFACTORY().openSession()) {
+            transaction = session.beginTransaction();
+             session.delete(u);
+            transaction.commit();
+            check = true;
+            
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            transaction.rollback();
+        }
+        return check;
+    }
+    
     public ArrayList<User> getAllRepoStory() {
         ArrayList<User> list = new ArrayList<>();
         try {
