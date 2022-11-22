@@ -5,10 +5,13 @@
 package hibernateConfig;
 
 import java.util.Properties;
+import model.HoaDon;
+import model.Laptop;
 import org.hibernate.SessionFactory;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.cfg.Environment;
 import org.hibernate.service.ServiceRegistry;
+
 
 /**
  *
@@ -30,8 +33,8 @@ public class HibernateConfig {
         //gen DB tự động
 //        properties.put(Environment.HBM2DDL_AUTO, "create");// tạo bảng trong sql
          
-//        conf.addAnnotatedClass(SanPham.class);
-//        conf.addAnnotatedClass(MauSac.class);
+        conf.addAnnotatedClass(Laptop.class);
+        conf.addAnnotatedClass(HoaDon.class);
 //        conf.addAnnotatedClass(VGA.class);
 //        conf.addAnnotatedClass(CPU.class);
 //        conf.addAnnotatedClass(ChiTietSanPham.class);
