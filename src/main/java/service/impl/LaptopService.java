@@ -21,6 +21,10 @@ public class LaptopService implements ILaptopService{
     public ArrayList<Laptop> getList() {
         return (ArrayList<Laptop>) laptopRepository.selectAll();
     }
+    @Override
+    public ArrayList<Laptop> getListLaptop() {
+        return (ArrayList<Laptop>) laptopRepository.getlistLaptop();
+    }
      @Override
     public String addLaptopService(Laptop l) {
         if (laptopRepository.addLaptop(l)) {

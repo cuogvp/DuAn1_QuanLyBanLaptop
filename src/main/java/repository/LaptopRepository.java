@@ -21,11 +21,20 @@ public class LaptopRepository {
     public List<Laptop> selectAll() {
         List<Laptop> listsp;
         try ( Session session = HibernateConfig.getFACTORY().openSession()) {
-            TypedQuery<Laptop> query = session.createQuery("FROM Laptop l");
+            TypedQuery<Laptop> query = session.createQuery("FROM Laptop ");
             listsp = query.getResultList();
             session.close();
         }
         return listsp;
+    }
+    public List<Laptop> getlistLaptop() {
+        List<Laptop> lists = new ArrayList<Laptop>();
+        try ( Session session = HibernateConfig.getFACTORY().openSession()) {
+            String hql = "SELECT lt FROM Laptop lt";
+            TypedQuery<Laptop> query = session.createQuery(hql, Laptop.class);
+            lists = query.getResultList();
+        }
+        return lists;
     }
    public Boolean addLaptop(Laptop l) {
         Transaction transaction = null;
