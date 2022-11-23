@@ -160,7 +160,7 @@ public class NhanVienPanel extends javax.swing.JPanel {
         rdoNam.setText("Nam");
 
         btnSuaNV.setBackground(new java.awt.Color(204, 255, 255));
-        btnSuaNV.setIcon(new javax.swing.ImageIcon("D:\\ki 3\\java 3\\DuAn1_QuanLyBanLaptop\\anh\\update.png")); // NOI18N
+        btnSuaNV.setIcon(new javax.swing.ImageIcon("D:\\DUAN_1\\DuAn1_QuanLyBanLaptop\\anh\\update.png")); // NOI18N
         btnSuaNV.setText("Sửa");
         btnSuaNV.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -169,7 +169,7 @@ public class NhanVienPanel extends javax.swing.JPanel {
         });
 
         btnXoaNV.setBackground(new java.awt.Color(204, 255, 255));
-        btnXoaNV.setIcon(new javax.swing.ImageIcon("D:\\ki 3\\java 3\\DuAn1_QuanLyBanLaptop\\anh\\xoa.png")); // NOI18N
+        btnXoaNV.setIcon(new javax.swing.ImageIcon("D:\\DUAN_1\\DuAn1_QuanLyBanLaptop\\anh\\xoa.png")); // NOI18N
         btnXoaNV.setText("Xóa");
         btnXoaNV.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -178,7 +178,7 @@ public class NhanVienPanel extends javax.swing.JPanel {
         });
 
         btnXoaForm.setBackground(new java.awt.Color(204, 255, 255));
-        btnXoaForm.setIcon(new javax.swing.ImageIcon("D:\\ki 3\\java 3\\DuAn1_QuanLyBanLaptop\\anh\\clearForm.png")); // NOI18N
+        btnXoaForm.setIcon(new javax.swing.ImageIcon("D:\\DUAN_1\\DuAn1_QuanLyBanLaptop\\anh\\clearForm.png")); // NOI18N
         btnXoaForm.setText("xóa from");
         btnXoaForm.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -189,7 +189,7 @@ public class NhanVienPanel extends javax.swing.JPanel {
         jPanel2.setBackground(new java.awt.Color(204, 255, 255));
 
         btnTimKiem.setBackground(new java.awt.Color(204, 255, 255));
-        btnTimKiem.setIcon(new javax.swing.ImageIcon("D:\\ki 3\\java 3\\DuAn1_QuanLyBanLaptop\\anh\\find.png")); // NOI18N
+        btnTimKiem.setIcon(new javax.swing.ImageIcon("D:\\DUAN_1\\DuAn1_QuanLyBanLaptop\\anh\\find.png")); // NOI18N
         btnTimKiem.setText("Tìm Kiếm");
 
         tblQLNhanVien.setModel(new javax.swing.table.DefaultTableModel(
@@ -276,11 +276,11 @@ public class NhanVienPanel extends javax.swing.JPanel {
         );
 
         btnHinhAnh.setBackground(new java.awt.Color(204, 255, 255));
-        btnHinhAnh.setIcon(new javax.swing.ImageIcon("D:\\ki 3\\java 3\\DuAn1_QuanLyBanLaptop\\anh\\img.png")); // NOI18N
+        btnHinhAnh.setIcon(new javax.swing.ImageIcon("D:\\DUAN_1\\DuAn1_QuanLyBanLaptop\\anh\\img.png")); // NOI18N
         btnHinhAnh.setText("chọn ảnh");
 
         btnThemNV.setBackground(new java.awt.Color(204, 255, 255));
-        btnThemNV.setIcon(new javax.swing.ImageIcon("D:\\ki 3\\java 3\\DuAn1_QuanLyBanLaptop\\anh\\Them.png")); // NOI18N
+        btnThemNV.setIcon(new javax.swing.ImageIcon("D:\\DUAN_1\\DuAn1_QuanLyBanLaptop\\anh\\Them.png")); // NOI18N
         btnThemNV.setText("Thêm");
         btnThemNV.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

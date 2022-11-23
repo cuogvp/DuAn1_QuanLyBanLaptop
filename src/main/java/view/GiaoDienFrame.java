@@ -75,7 +75,7 @@ public class GiaoDienFrame extends javax.swing.JFrame {
         jPanel3.setBackground(new java.awt.Color(16, 60, 100));
 
         btnThongKe.setBackground(new java.awt.Color(253, 254, 253));
-        btnThongKe.setIcon(new javax.swing.ImageIcon("D:\\ki 3\\java 3\\DuAn1_QuanLyBanLaptop\\anh\\thongKe.png")); // NOI18N
+        btnThongKe.setIcon(new javax.swing.ImageIcon("D:\\DUAN_1\\DuAn1_QuanLyBanLaptop\\anh\\thongKe.png")); // NOI18N
         btnThongKe.setText("Thống kê");
         btnThongKe.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -84,7 +84,7 @@ public class GiaoDienFrame extends javax.swing.JFrame {
         });
 
         btnBanHang.setBackground(new java.awt.Color(253, 254, 253));
-        btnBanHang.setIcon(new javax.swing.ImageIcon("D:\\ki 3\\java 3\\DuAn1_QuanLyBanLaptop\\anh\\sell.png")); // NOI18N
+        btnBanHang.setIcon(new javax.swing.ImageIcon("D:\\DUAN_1\\DuAn1_QuanLyBanLaptop\\anh\\sell.png")); // NOI18N
         btnBanHang.setText("Bán hàng");
         btnBanHang.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -93,7 +93,7 @@ public class GiaoDienFrame extends javax.swing.JFrame {
         });
 
         btnSanPham.setBackground(new java.awt.Color(253, 254, 253));
-        btnSanPham.setIcon(new javax.swing.ImageIcon("D:\\ki 3\\java 3\\DuAn1_QuanLyBanLaptop\\anh\\laptop.png")); // NOI18N
+        btnSanPham.setIcon(new javax.swing.ImageIcon("D:\\DUAN_1\\DuAn1_QuanLyBanLaptop\\anh\\laptop.png")); // NOI18N
         btnSanPham.setText("Sản phẩm");
         btnSanPham.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -102,7 +102,7 @@ public class GiaoDienFrame extends javax.swing.JFrame {
         });
 
         btnNhanVien.setBackground(new java.awt.Color(253, 254, 253));
-        btnNhanVien.setIcon(new javax.swing.ImageIcon("D:\\ki 3\\java 3\\DuAn1_QuanLyBanLaptop\\anh\\staff.png")); // NOI18N
+        btnNhanVien.setIcon(new javax.swing.ImageIcon("D:\\DUAN_1\\DuAn1_QuanLyBanLaptop\\anh\\staff.png")); // NOI18N
         btnNhanVien.setText("Nhân Viên");
         btnNhanVien.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -111,7 +111,7 @@ public class GiaoDienFrame extends javax.swing.JFrame {
         });
 
         btnKhachHang.setBackground(new java.awt.Color(253, 254, 253));
-        btnKhachHang.setIcon(new javax.swing.ImageIcon("D:\\ki 3\\java 3\\DuAn1_QuanLyBanLaptop\\anh\\khachHang.png")); // NOI18N
+        btnKhachHang.setIcon(new javax.swing.ImageIcon("D:\\DUAN_1\\DuAn1_QuanLyBanLaptop\\anh\\khachHang.png")); // NOI18N
         btnKhachHang.setText("Khách Hàng");
         btnKhachHang.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -120,7 +120,7 @@ public class GiaoDienFrame extends javax.swing.JFrame {
         });
 
         btnKhuyenMai.setBackground(new java.awt.Color(253, 254, 253));
-        btnKhuyenMai.setIcon(new javax.swing.ImageIcon("D:\\ki 3\\java 3\\DuAn1_QuanLyBanLaptop\\anh\\giamGia.png")); // NOI18N
+        btnKhuyenMai.setIcon(new javax.swing.ImageIcon("D:\\DUAN_1\\DuAn1_QuanLyBanLaptop\\anh\\giamGia.png")); // NOI18N
         btnKhuyenMai.setText("khuyến mãi");
         btnKhuyenMai.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -129,7 +129,7 @@ public class GiaoDienFrame extends javax.swing.JFrame {
         });
 
         btnDangXuat.setBackground(new java.awt.Color(253, 254, 253));
-        btnDangXuat.setIcon(new javax.swing.ImageIcon("D:\\ki 3\\java 3\\DuAn1_QuanLyBanLaptop\\anh\\logout.png")); // NOI18N
+        btnDangXuat.setIcon(new javax.swing.ImageIcon("D:\\DUAN_1\\DuAn1_QuanLyBanLaptop\\anh\\logout.png")); // NOI18N
         btnDangXuat.setText("Đăng xuất");
         btnDangXuat.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -143,7 +143,7 @@ public class GiaoDienFrame extends javax.swing.JFrame {
         jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel3.setText("Quản lý");
 
-        jLabel4.setIcon(new javax.swing.ImageIcon("D:\\ki 3\\java 3\\DuAn1_QuanLyBanLaptop\\anh\\logo2.png")); // NOI18N
+        jLabel4.setIcon(new javax.swing.ImageIcon("D:\\DUAN_1\\DuAn1_QuanLyBanLaptop\\anh\\logo2.png")); // NOI18N
         jLabel4.setText("jLabel4");
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
@@ -208,7 +208,7 @@ public class GiaoDienFrame extends javax.swing.JFrame {
                 .addComponent(btnThongKe, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(btnDangXuat, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(92, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         panel.setLayout(new java.awt.CardLayout());
