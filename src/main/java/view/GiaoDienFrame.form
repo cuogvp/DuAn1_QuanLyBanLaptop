@@ -148,9 +148,12 @@
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="fd" green="fe" red="fd" type="rgb"/>
             </Property>
+<<<<<<< HEAD
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
               <Image iconType="2" name="D:\ki 3\java 3\DuAn1_QuanLyBanLaptop\anh\sell.png"/>
             </Property>
+=======
+>>>>>>> aa4c10f6655314f599fb6db4c87e94cbfe5c61d9
             <Property name="text" type="java.lang.String" value="B&#xe1;n h&#xe0;ng"/>
           </Properties>
           <Events>

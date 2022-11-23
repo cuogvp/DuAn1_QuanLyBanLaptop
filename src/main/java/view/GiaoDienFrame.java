@@ -49,6 +49,7 @@ public class GiaoDienFrame extends javax.swing.JFrame {
             j.setVisible(false);
         }
         listjPanel.get(index).setVisible(true);
+
     }
 
     @SuppressWarnings("unchecked")

@@ -16,7 +16,11 @@ import lombok.NoArgsConstructor;
 import lombok.ToString;
 
 @Entity
+<<<<<<< HEAD
 @Table(name = "BaoHanh")
+=======
+@Table(name = "HoaDon")
+>>>>>>> aa4c10f6655314f599fb6db4c87e94cbfe5c61d9
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
@@ -29,7 +33,11 @@ public class HoaDon {
     private UUID id;
     @Column(name = "NgayTao")
     private String ngayTao;
+<<<<<<< HEAD
     @Column(name = "NgayDatHanh")
+=======
+    @Column(name = "NgayDatHang")
+>>>>>>> aa4c10f6655314f599fb6db4c87e94cbfe5c61d9
     private String ngayDatHang;
     @Column(name = "NgayShip")
     private String ngayShip;
@@ -39,6 +47,7 @@ public class HoaDon {
     private String tinhTrang;
     @Column(name = "DiaChi")
     private String diaChi;
+<<<<<<< HEAD
     @Column(name = "Sdt")
     private String sdt;
     @Column(name = "SoLuong")
@@ -47,4 +56,14 @@ public class HoaDon {
     private String idKH;
     @Column(name = "IDUserr")
     private String idUserr;
+=======
+    @Column(name = "SDT")
+    private String sdt;
+    @Column(name = "SoLuong")
+    private String soLuong;
+    @Column(name = "IDKH")
+    private String idkh;
+    @Column(name = "IDUserr")
+    private String iduser;
+>>>>>>> aa4c10f6655314f599fb6db4c87e94cbfe5c61d9
 }
