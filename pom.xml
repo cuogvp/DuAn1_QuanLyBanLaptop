@@ -25,6 +25,11 @@
             <artifactId>hibernate-core</artifactId>
             <version>5.6.9.Final</version>
         </dependency>
+        <dependency>
+            <groupId>net.sourceforge.barbecue</groupId>
+            <artifactId>barbecue</artifactId>
+            <version>1.5-beta1</version>
+        </dependency>
         <!-- https://mvnrepository.com/artifact/com.microsoft.sqlserver/mssql-jdbc -->
         <!-- https://mvnrepository.com/artifact/com.microsoft.sqlserver/mssql-jdbc -->
         <dependency>
@@ -38,5 +43,9 @@
             <version>RELEASE130</version>
         </dependency>
     </dependencies>
+<<<<<<< HEAD
 
+=======
+  
+>>>>>>> aa4c10f6655314f599fb6db4c87e94cbfe5c61d9
 </project>
