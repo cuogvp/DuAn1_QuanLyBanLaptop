@@ -294,7 +294,7 @@
           <Color blue="ff" green="ff" red="cc" type="rgb"/>
         </Property>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="2" name="D:\ki 3\java 3\DuAn1_QuanLyBanLaptop\anh\update.png"/>
+          <Image iconType="2" name="D:\DUAN_1\DuAn1_QuanLyBanLaptop\anh\update.png"/>
         </Property>
         <Property name="text" type="java.lang.String" value="S&#x1eed;a"/>
       </Properties>
@@ -308,7 +308,7 @@
           <Color blue="ff" green="ff" red="cc" type="rgb"/>
         </Property>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="2" name="D:\ki 3\java 3\DuAn1_QuanLyBanLaptop\anh\xoa.png"/>
+          <Image iconType="2" name="D:\DUAN_1\DuAn1_QuanLyBanLaptop\anh\xoa.png"/>
         </Property>
         <Property name="text" type="java.lang.String" value="X&#xf3;a"/>
       </Properties>
@@ -322,7 +322,7 @@
           <Color blue="ff" green="ff" red="cc" type="rgb"/>
         </Property>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="2" name="D:\ki 3\java 3\DuAn1_QuanLyBanLaptop\anh\clearForm.png"/>
+          <Image iconType="2" name="D:\DUAN_1\DuAn1_QuanLyBanLaptop\anh\clearForm.png"/>
         </Property>
         <Property name="text" type="java.lang.String" value="x&#xf3;a from"/>
       </Properties>
@@ -379,7 +379,7 @@
               <Color blue="ff" green="ff" red="cc" type="rgb"/>
             </Property>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="2" name="D:\ki 3\java 3\DuAn1_QuanLyBanLaptop\anh\find.png"/>
+              <Image iconType="2" name="D:\DUAN_1\DuAn1_QuanLyBanLaptop\anh\find.png"/>
             </Property>
             <Property name="text" type="java.lang.String" value="T&#xec;m Ki&#x1ebf;m"/>
           </Properties>
@@ -548,7 +548,7 @@
           <Color blue="ff" green="ff" red="cc" type="rgb"/>
         </Property>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="2" name="D:\ki 3\java 3\DuAn1_QuanLyBanLaptop\anh\img.png"/>
+          <Image iconType="2" name="D:\DUAN_1\DuAn1_QuanLyBanLaptop\anh\img.png"/>
         </Property>
         <Property name="text" type="java.lang.String" value="ch&#x1ecd;n &#x1ea3;nh"/>
       </Properties>
@@ -559,7 +559,7 @@
           <Color blue="ff" green="ff" red="cc" type="rgb"/>
         </Property>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="2" name="D:\ki 3\java 3\DuAn1_QuanLyBanLaptop\anh\Them.png"/>
+          <Image iconType="2" name="D:\DUAN_1\DuAn1_QuanLyBanLaptop\anh\Them.png"/>
         </Property>
         <Property name="text" type="java.lang.String" value="Th&#xea;m"/>
       </Properties>

@@ -121,7 +121,7 @@
                   <Component id="btnThongKe" min="-2" pref="38" max="-2" attributes="0"/>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Component id="btnDangXuat" min="-2" pref="38" max="-2" attributes="0"/>
-                  <EmptySpace pref="92" max="32767" attributes="0"/>
+                  <EmptySpace max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -135,7 +135,7 @@
               <Color blue="fd" green="fe" red="fd" type="rgb"/>
             </Property>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="2" name="D:\ki 3\java 3\DuAn1_QuanLyBanLaptop\anh\thongKe.png"/>
+              <Image iconType="2" name="D:\DUAN_1\DuAn1_QuanLyBanLaptop\anh\thongKe.png"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Th&#x1ed1;ng k&#xea;"/>
           </Properties>
@@ -149,7 +149,7 @@
               <Color blue="fd" green="fe" red="fd" type="rgb"/>
             </Property>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="2" name="D:\ki 3\java 3\DuAn1_QuanLyBanLaptop\anh\sell.png"/>
+              <Image iconType="2" name="D:\DUAN_1\DuAn1_QuanLyBanLaptop\anh\sell.png"/>
             </Property>
             <Property name="text" type="java.lang.String" value="B&#xe1;n h&#xe0;ng"/>
           </Properties>
@@ -163,7 +163,7 @@
               <Color blue="fd" green="fe" red="fd" type="rgb"/>
             </Property>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="2" name="D:\ki 3\java 3\DuAn1_QuanLyBanLaptop\anh\laptop.png"/>
+              <Image iconType="2" name="D:\DUAN_1\DuAn1_QuanLyBanLaptop\anh\laptop.png"/>
             </Property>
             <Property name="text" type="java.lang.String" value="S&#x1ea3;n ph&#x1ea9;m"/>
           </Properties>
@@ -177,7 +177,7 @@
               <Color blue="fd" green="fe" red="fd" type="rgb"/>
             </Property>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="2" name="D:\ki 3\java 3\DuAn1_QuanLyBanLaptop\anh\staff.png"/>
+              <Image iconType="2" name="D:\DUAN_1\DuAn1_QuanLyBanLaptop\anh\staff.png"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Nh&#xe2;n Vi&#xea;n"/>
           </Properties>
@@ -191,7 +191,7 @@
               <Color blue="fd" green="fe" red="fd" type="rgb"/>
             </Property>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="2" name="D:\ki 3\java 3\DuAn1_QuanLyBanLaptop\anh\khachHang.png"/>
+              <Image iconType="2" name="D:\DUAN_1\DuAn1_QuanLyBanLaptop\anh\khachHang.png"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Kh&#xe1;ch H&#xe0;ng"/>
           </Properties>
@@ -205,7 +205,7 @@
               <Color blue="fd" green="fe" red="fd" type="rgb"/>
             </Property>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="2" name="D:\ki 3\java 3\DuAn1_QuanLyBanLaptop\anh\giamGia.png"/>
+              <Image iconType="2" name="D:\DUAN_1\DuAn1_QuanLyBanLaptop\anh\giamGia.png"/>
             </Property>
             <Property name="text" type="java.lang.String" value="khuy&#x1ebf;n m&#xe3;i"/>
           </Properties>
@@ -219,7 +219,7 @@
               <Color blue="fd" green="fe" red="fd" type="rgb"/>
             </Property>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="2" name="D:\ki 3\java 3\DuAn1_QuanLyBanLaptop\anh\logout.png"/>
+              <Image iconType="2" name="D:\DUAN_1\DuAn1_QuanLyBanLaptop\anh\logout.png"/>
             </Property>
             <Property name="text" type="java.lang.String" value="&#x110;&#x103;ng xu&#x1ea5;t"/>
           </Properties>
@@ -246,7 +246,7 @@
         <Component class="javax.swing.JLabel" name="jLabel4">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="2" name="D:\ki 3\java 3\DuAn1_QuanLyBanLaptop\anh\logo2.png"/>
+              <Image iconType="2" name="D:\DUAN_1\DuAn1_QuanLyBanLaptop\anh\logo2.png"/>
             </Property>
             <Property name="text" type="java.lang.String" value="jLabel4"/>
           </Properties>
