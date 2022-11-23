@@ -1,9 +1,12 @@
 package view;
 
+import DomainModels.HoaDon;
+import Services.IChiTietSPService;
+import java.util.ArrayList;
 import java.util.List;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import model.Laptop;
-<<<<<<< HEAD
 import service.impl.LaptopService;
 import services.ILaptopService;
 
@@ -11,38 +14,19 @@ import services.ILaptopService;
  *
  * @author dangc
  */
-public class BanHangPanel extends javax.swing.JPanel {
-
-    
-    
-    public BanHangPanel() {
-        initComponents();
-        
-    }
-   
-    
-=======
-import model.HoaDon;
-import iml.service.IHoaDonSer;
-import iml.service.ITTSPSer;
-import java.util.ArrayList;
-import javax.print.attribute.standard.Severity;
-import javax.swing.JOptionPane;
-import service.impl.TTSPSer;
-import service.impl.HoaDonSer;
 
 public class BanHangPanel extends javax.swing.JPanel {
 
-    private ITTSPSer IttspSer = new TTSPSer();
-    private IHoaDonSer IhdSer = new HoaDonSer();
+//    private IChiTietSPService IttspSer = new ;
+//    private IHoaDonSer IhdSer = new HoaDonSer();
     private DefaultTableModel model;
     DefaultTableModel tblModelv2;
-    ArrayList<Laptop> lstv2 = new ArrayList<>();
+//    ArrayList<Laptop> lstv2 = new ArrayList<>();
 
     public BanHangPanel() {
         initComponents();
-        this.LoadData(IhdSer.getList());
-        this.loadData(IttspSer.getList());
+//        this.LoadData(IhdSer.getList());
+//        this.loadData(IttspSer.getList());
 
     }
 
@@ -58,9 +42,9 @@ public class BanHangPanel extends javax.swing.JPanel {
     public void LoadData(List<HoaDon> listHd) {
         model = (DefaultTableModel) tbHoaDon.getModel();
         model.setRowCount(0);
-        for (HoaDon hd : listHd) {
-            model.addRow(new Object[]{hd.getId(), hd.getNgayTao(), hd.getSdt(), hd.getDiaChi(), hd.getSoLuong(), hd.getTinhTrang()});
-        }
+//        for (HoaDon hd : listHd) {
+//            model.addRow(new Object[]{hd.getId(), hd.getNgayTao(), hd.getSdt(), hd.getDiaChi(), hd., hd.getTinhTrang()});
+//        }
     }
 
     public HoaDon getData() {
@@ -76,9 +60,9 @@ public class BanHangPanel extends javax.swing.JPanel {
         hd.setSdt(sdt);
         hd.setDiaChi(diaChi);
         hd.setNgayTao(ngayTao);
-        hd.setNgayDatHang(ngayDat);
+        hd.setNgayTao(ngayDat);
         hd.setNgayShip(ngayShip);
-        hd.setNgayNhanHang(ngaytt);
+        hd.setNgayNhan(ngaytt);
         return hd;
 
     }
@@ -88,9 +72,9 @@ public class BanHangPanel extends javax.swing.JPanel {
         txtSdt.setText(hd.getSdt());
         txt_diaChi.setText(hd.getDiaChi());
         txtNgayTao.setText(hd.getNgayTao());
-        txtNgaydat.setText(hd.getNgayDatHang());
+        txtNgaydat.setText(hd.getNgayTao());
         txtNgayShip4.setText(hd.getNgayShip());
-        txtngayTt.setText(hd.getNgayNhanHang());
+        txtngayTt.setText(hd.getNgayNhan());
 
 //        lbId.setText(String.valueOf(sp.getId()));
     }
@@ -233,7 +217,7 @@ public class BanHangPanel extends javax.swing.JPanel {
             .addGap(0, 31, Short.MAX_VALUE)
         );
 
-        jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder("Thông Tin Hóa Đơn"));
+        jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder("Thông Tin Hóa �?ơn"));
         jPanel3.setForeground(new java.awt.Color(102, 255, 204));
 
         tbHoaDon.setModel(new javax.swing.table.DefaultTableModel(
@@ -244,7 +228,7 @@ public class BanHangPanel extends javax.swing.JPanel {
                 {null, null, null, null, null, null}
             },
             new String [] {
-                "ID", "Ngày Tạo", "SĐT", "Địa Chỉ", "Số Lượng", "Tình Trạng"
+                "ID", "Ngày Tạo", "S�?T", "�?ịa Chỉ", "Số Lượng", "Tình Trạng"
             }
         ));
         jScrollPane3.setViewportView(tbHoaDon);
@@ -277,7 +261,7 @@ public class BanHangPanel extends javax.swing.JPanel {
                 {null, null, null, null, null}
             },
             new String [] {
-                "IMei", "Tên Sản Phẩm", "Đơn Giá", "Trạng Thái", "Khuyễn Mãi"
+                "IMei", "Tên Sản Phẩm", "�?ơn Giá", "Trạng Thái", "Khuyễn Mãi"
             }
         ));
         tbTtsp.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -321,24 +305,24 @@ public class BanHangPanel extends javax.swing.JPanel {
         );
 
         jPanel5.setBackground(new java.awt.Color(0, 255, 204));
-        jPanel5.setBorder(javax.swing.BorderFactory.createTitledBorder("Hóa Đơn Chi Tiết"));
+        jPanel5.setBorder(javax.swing.BorderFactory.createTitledBorder("Hóa �?ơn Chi Tiết"));
 
-        jLabel3.setText("Ngày Tạo Hóa Đơn");
+        jLabel3.setText("Ngày Tạo Hóa �?ơn");
 
-        jLabel4.setText("Địa Chỉ ");
+        jLabel4.setText("�?ịa Chỉ ");
 
         jLabel5.setText("SDT Khách Hàng");
 
-        jLabel6.setText("Thành Tiền");
+        jLabel6.setText("Thành Ti�?n");
 
-        btn_them.setText("Tạo Hóa Đơn");
+        btn_them.setText("Tạo Hóa �?ơn");
         btn_them.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn_themActionPerformed(evt);
             }
         });
 
-        jButton3.setText("Hủy Hóa Đơn");
+        jButton3.setText("Hủy Hóa �?ơn");
 
         jButton2.setText("Thanh Toán");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
@@ -347,13 +331,13 @@ public class BanHangPanel extends javax.swing.JPanel {
             }
         });
 
-        jLabel7.setText("Ngày Đặt Hàng");
+        jLabel7.setText("Ngày �?ặt Hàng");
 
         jLabel8.setText("Ngay Ship");
 
         jLabel12.setText("Ngày Thanh Toán");
 
-        jButton5.setText("Sửa Hóa Đơn");
+        jButton5.setText("Sửa Hóa �?ơn");
 
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
@@ -447,7 +431,7 @@ public class BanHangPanel extends javax.swing.JPanel {
                 .addGap(32, 32, 32))
         );
 
-        jPanel6.setBorder(javax.swing.BorderFactory.createTitledBorder("Giỏ Hàng"));
+        jPanel6.setBorder(javax.swing.BorderFactory.createTitledBorder("Gi�? Hàng"));
         jPanel6.setForeground(new java.awt.Color(102, 255, 204));
 
         tb_giohang.setModel(new javax.swing.table.DefaultTableModel(
@@ -458,7 +442,7 @@ public class BanHangPanel extends javax.swing.JPanel {
                 {null, null, null, null}
             },
             new String [] {
-                "IMei", "Tên Sản Phẩm ", "Đơn Giá", "Số Lương"
+                "IMei", "Tên Sản Phẩm ", "�?ơn Giá", "Số Lương"
             }
         ));
         tb_giohang.addMouseListener(new java.awt.event.MouseAdapter() {
