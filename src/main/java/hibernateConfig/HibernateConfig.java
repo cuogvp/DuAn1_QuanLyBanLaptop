@@ -5,7 +5,6 @@
 package hibernateConfig;
 
 import java.util.Properties;
-<<<<<<< HEAD
 import model.BaoHanh;
 import model.CuaHang;
 import model.HoaDon;
@@ -14,10 +13,8 @@ import model.KhachHang;
 import model.KhuyenMai;
 import model.Laptop;
 import model.Userr;
-=======
 import model.HoaDon;
 import model.Laptop;
->>>>>>> aa4c10f6655314f599fb6db4c87e94cbfe5c61d9
 import org.hibernate.SessionFactory;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.cfg.Environment;
@@ -45,7 +42,6 @@ public class HibernateConfig {
 //        properties.put(Environment.HBM2DDL_AUTO, "create");// tạo bảng trong sql
          
         conf.addAnnotatedClass(Laptop.class);
-<<<<<<< HEAD
         conf.addAnnotatedClass(Userr.class);
         conf.addAnnotatedClass(CuaHang.class);
         conf.addAnnotatedClass(KhachHang.class);
@@ -53,7 +49,6 @@ public class HibernateConfig {
         conf.addAnnotatedClass(KhuyenMai.class);
         conf.addAnnotatedClass(BaoHanh.class);
         conf.addAnnotatedClass(HoaDonChiTiet.class);
-=======
         conf.addAnnotatedClass(HoaDon.class);
 //        conf.addAnnotatedClass(VGA.class);
 //        conf.addAnnotatedClass(CPU.class);
@@ -65,7 +60,6 @@ public class HibernateConfig {
 //        conf.addAnnotatedClass(Ram.class);
         
        
->>>>>>> aa4c10f6655314f599fb6db4c87e94cbfe5c61d9
 
 
         conf.setProperties(properties);
