@@ -42,7 +42,8 @@ public class SanPhamPanel extends javax.swing.JPanel {
                 l.getGiaNhap(), l.getGiaBan(), l.getMoTa(), l.getTrangThai() == 1 ? "còn hàng" : "hết hàng", l.getHinhAnh()});
         }
     }
-    public void reset(){
+
+    public void reset() {
         txtMaLaptop.setText("");
         txtTenLaptop.setText("");
         txtImei.setText("");
@@ -52,6 +53,7 @@ public class SanPhamPanel extends javax.swing.JPanel {
         txtTrangThai.setText("");
         lbHinhAnh.setText("NO AVATAR");
     }
+
     public Laptop getData() {
         Laptop l = new Laptop();
         String ma = txtMaLaptop.getText().trim();
@@ -91,6 +93,96 @@ public class SanPhamPanel extends javax.swing.JPanel {
         }
         l.setHinhAnh(anhSP);
         return l;
+    }
+
+    public boolean checkValidate() {
+        if (txtMaLaptop.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Mã không được để trống");
+            return false;
+        }
+        if (txtTenLaptop.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Tên không được để trống");
+            return false;
+        }
+        if (txtImei.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Imei không được để trống");
+            return false;
+        }
+        if (txtGiaNhap.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Giá nhập không được để trống");
+            return false;
+        }
+        if (txtGiaBan.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Giá bán không được để trống");
+            return false;
+        }
+        if (txtMoTa.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "mô tả không được để trống");
+            return false;
+        }
+        if (txtTrangThai.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Trạng thái không được để trống");
+            return false;
+        }
+
+        try {
+            String giaNhapStr = txtGiaNhap.getText();
+            double giaNhapDb = Double.parseDouble(giaNhapStr);
+            BigDecimal giaNhap = BigDecimal.valueOf(giaNhapDb);
+
+        } catch (NumberFormatException numberFormatException) {
+            JOptionPane.showMessageDialog(this, "Giá nhập không phải là số");
+            return false;
+        }
+        try {
+            String giaNhapStr = txtGiaNhap.getText();
+            double giaNhapDb = Double.parseDouble(giaNhapStr);
+            BigDecimal giaNhap = BigDecimal.valueOf(giaNhapDb);
+
+            String giaBanStr = txtGiaBan.getText();
+            double giaBanDb = Double.parseDouble(giaBanStr);
+            BigDecimal giaBan = BigDecimal.valueOf(giaBanDb);
+            if (giaNhap.compareTo(giaBan) == 1) {
+                JOptionPane.showMessageDialog(this, "Giá bán phải lớn hơn giá nhập");
+                return false;
+            }
+
+        } catch (NumberFormatException numberFormatException) {
+            JOptionPane.showMessageDialog(this, "Giá Bán không phải là số");
+            return false;
+        }
+        try {
+            String trangThaiStr = txtTrangThai.getText();
+            int trangThai = Integer.parseInt(trangThaiStr);
+
+        } catch (NumberFormatException numberFormatException) {
+            JOptionPane.showMessageDialog(this, "Trạng thái không phải là số");
+            return false;
+        }
+        return true;
+    }
+
+    public boolean checkTrung() {
+        List<Laptop> listLT = iLaptopService.getList();
+        String ma = txtMaLaptop.getText();
+        for (Laptop l : listLT) {
+            if (l.getMa().equals(ma)) {
+                JOptionPane.showMessageDialog(this, "mã không được trùng");
+                return false;
+            }
+        }
+        return true;
+    }
+    public boolean checkTrungImei() {
+        List<Laptop> listLT = iLaptopService.getList();
+        String imei = txtImei.getText();
+        for (Laptop l : listLT) {
+            if (l.getImei().equals(imei)) {
+                JOptionPane.showMessageDialog(this, "imei không được trùng");
+                return false;
+            }
+        }
+        return true;
     }
 
     @SuppressWarnings("unchecked")
@@ -207,17 +299,11 @@ public class SanPhamPanel extends javax.swing.JPanel {
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(52, 52, 52)
-                .addComponent(lbHinhAnh)
-                .addContainerGap(55, Short.MAX_VALUE))
+            .addComponent(lbHinhAnh, javax.swing.GroupLayout.DEFAULT_SIZE, 173, Short.MAX_VALUE)
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(76, 76, 76)
-                .addComponent(lbHinhAnh)
-                .addContainerGap(86, Short.MAX_VALUE))
+            .addComponent(lbHinhAnh, javax.swing.GroupLayout.DEFAULT_SIZE, 178, Short.MAX_VALUE)
         );
 
         btnSua.setBackground(new java.awt.Color(204, 255, 255));
@@ -254,6 +340,11 @@ public class SanPhamPanel extends javax.swing.JPanel {
         btnXoaForm.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         btnXoaForm.setIcon(new javax.swing.ImageIcon("D:\\DUAN_1\\DuAn1_QuanLyBanLaptop\\anh\\clearForm.png")); // NOI18N
         btnXoaForm.setText("Xóa form");
+        btnXoaForm.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnXoaFormActionPerformed(evt);
+            }
+        });
 
         jPanel2.setBackground(new java.awt.Color(204, 255, 255));
 
@@ -490,7 +581,7 @@ public class SanPhamPanel extends javax.swing.JPanel {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(txtTrangThai, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel8))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 18, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(43, 43, 43)
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -498,21 +589,33 @@ public class SanPhamPanel extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnThemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThemActionPerformed
-        Laptop l = getData();
-        String query = iLaptopService.addLaptopService(l);
-        JOptionPane.showMessageDialog(this, query);
-        loadTableLaptop(iLaptopService.getList());
-        reset();
+
+        if (checkValidate() == false) {
+            return;
+        }
+        if (checkTrung()) {
+            if(checkTrungImei()){
+            Laptop l = getData();
+            String query = iLaptopService.addLaptopService(l);
+            JOptionPane.showMessageDialog(this, query);
+            loadTableLaptop(iLaptopService.getList());
+            reset();
+            }
+        }
 
     }//GEN-LAST:event_btnThemActionPerformed
 
     private void btnSuaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSuaActionPerformed
-
+        
         int row = tblQLSanPham.getSelectedRow();
         if (row == -1) {
             JOptionPane.showMessageDialog(this, "Chọn dòng cần sửa");
             return;
         }
+        if (checkValidate() == false) {
+            return;
+        }
+        
         int confirm = JOptionPane.showConfirmDialog(this,
                 "Xác nhận sửa?", "Thông Báo", JOptionPane.YES_NO_OPTION);
         if (confirm != JOptionPane.YES_OPTION) {
@@ -520,7 +623,7 @@ public class SanPhamPanel extends javax.swing.JPanel {
         }
         Laptop l = getData();
         l.setId(iLaptopService.getList().get(row).getId());
-        String query= iLaptopService.updateLaptopService(l);
+        String query = iLaptopService.updateLaptopService(l);
         JOptionPane.showMessageDialog(this, query);
         loadTableLaptop(iLaptopService.getList());
         reset();
@@ -539,7 +642,7 @@ public class SanPhamPanel extends javax.swing.JPanel {
         }
         Laptop l = getData();
         l.setId(iLaptopService.getList().get(row).getId());
-        String query= iLaptopService.deleteLaptopService(l);
+        String query = iLaptopService.deleteLaptopService(l);
         JOptionPane.showMessageDialog(this, query);
         loadTableLaptop(iLaptopService.getList());
         reset();
@@ -567,13 +670,13 @@ public class SanPhamPanel extends javax.swing.JPanel {
 //        } else {
 //
 //            lbHinhAnh.setText("");
-//            ImageIcon icon = new ImageIcon(getClass().getResource("\\anh\\" + l.getHinhAnh()));
+//            ImageIcon icon = new ImageIcon(getClass().getResource("D:\\DUAN_1\\DuAn1_QuanLyBanLaptop\\anh" + l.getHinhAnh()));
 //            Image image = icon.getImage();
 //            image.getScaledInstance(lbHinhAnh.getWidth(), lbHinhAnh.getHeight(), 0);
 //            lbHinhAnh.setIcon(icon);
 //        }
-        
-        
+
+
     }//GEN-LAST:event_tblQLSanPhamMouseClicked
 
     private void btnTimKiemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTimKiemActionPerformed
@@ -582,7 +685,7 @@ public class SanPhamPanel extends javax.swing.JPanel {
 
     private void lbHinhAnhMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbHinhAnhMouseClicked
         try {
-            JFileChooser jfc = new JFileChooser("D:\\ki 3\\java 3\\DuAn1_QuanLyBanLaptop\\src\\anh");
+            JFileChooser jfc = new JFileChooser("D:\\DUAN_1\\DuAn1_QuanLyBanLaptop\\anh");
             jfc.showOpenDialog(null);
             File f = jfc.getSelectedFile();
             if (f == null) {
@@ -599,6 +702,10 @@ public class SanPhamPanel extends javax.swing.JPanel {
             System.out.println("ERRO" + ex.toString());
         }
     }//GEN-LAST:event_lbHinhAnhMouseClicked
+
+    private void btnXoaFormActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnXoaFormActionPerformed
+        reset();
+    }//GEN-LAST:event_btnXoaFormActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

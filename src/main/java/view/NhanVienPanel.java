@@ -4,7 +4,17 @@
  */
 package view;
 
+import java.awt.Image;
+import java.io.File;
+import java.io.IOException;
+import java.sql.Date;
+import java.text.SimpleDateFormat;
 import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+import javax.imageio.ImageIO;
+import javax.swing.ImageIcon;
+import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import model.Userr;
@@ -17,25 +27,26 @@ import services.IUserService;
  */
 public class NhanVienPanel extends javax.swing.JPanel {
 
-    private  IUserService iUserService = new UserService();
+    private IUserService iUserService = new UserService();
     private DefaultTableModel model;
-    
+    private String duongDanAnh;
+
     public NhanVienPanel() {
         initComponents();
         loadData(iUserService.selectAll());
     }
 
-    public void loadData(List<Userr> listUs){
+    public void loadData(List<Userr> listUs) {
         model = (DefaultTableModel) tblQLNhanVien.getModel();
         model.setRowCount(0);
         for (Userr u : listUs) {
-            model.addRow(new Object[]{u.getMa(),u.getTen(),u.getNgaySinh()
-            ,u.isGioiTinh()==true?"Nam":"Nữ",u.getSdt(),u.getDiaChi(),u.getChucVu()
-            ,u.getMatKhau(),u.getHinhAnh()});
+            model.addRow(new Object[]{u.getMa(), u.getTen(), u.getNgaySinh(),
+                u.isGioiTinh() == true ? "Nam" : "Nữ", u.getSdt(), u.getDiaChi(), u.getChucVu(),
+                u.getMatKhau(), u.getHinhAnh()});
         }
     }
-    
-    public Userr getData(){
+
+    public Userr getData() {
         Userr u = new Userr();
         String ma = txtMaNV.getText().trim();
         u.setMa(ma);
@@ -44,9 +55,9 @@ public class NhanVienPanel extends javax.swing.JPanel {
         String ngaySinh = txtNgaySinh.getText().trim();
         u.setNgaySinh(ngaySinh);
         boolean gioiTinh;
-        if(rdoNam.isSelected()){
+        if (rdoNam.isSelected()) {
             gioiTinh = true;
-        }else{
+        } else {
             gioiTinh = false;
         }
         u.setGioiTinh(gioiTinh);
@@ -58,10 +69,91 @@ public class NhanVienPanel extends javax.swing.JPanel {
         u.setChucVu(chuVu);
         String matKhau = txtMatKhau.getText().trim();
         u.setMatKhau(matKhau);
-        u.setHinhAnh("NO AVATAR");
+
+//        String anhNV = duongDanAnh;
+//        if (duongDanAnh == "") {
+//            anhNV = "NO AVARTAR";
+//        }
+        u.setHinhAnh("NO AVARTAR");
         return u;
-        
+
     }
+
+    public boolean checkValidate() {
+        String dateStr = null;
+        if (txtMaNV.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Mã không được để trống");
+            return false;
+        }
+        if (txtTenNV.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Tên không được để trống");
+            return false;
+        }
+        if (txtNgaySinh.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Ngày Sinh không được để trống");
+            return false;
+        }
+        if (rdoNam.isSelected() == false && rdoNu.isSelected() == false) {
+            JOptionPane.showMessageDialog(this, "Bạn chưa chọn giới tính");
+            return false;
+        }
+        if (txtSdt.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Sđt không được để trống");
+            return false;
+        }
+        if (txtDiaChi.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Địa chỉ không được để trống");
+            return false;
+        }
+        if (txtMatKhau.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Ngày Sinh không được để trống");
+            return false;
+        }
+        try {
+            SimpleDateFormat formatDate = new SimpleDateFormat("yyyy-MM-dd");
+            Date d = java.sql.Date.valueOf(txtNgaySinh.getText().trim());
+            dateStr = formatDate.format(d);
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, "date khong dung dinh dang");
+            e.printStackTrace();
+            return false;
+        }
+        try {
+            String sdt = txtSdt.getText();
+            Pattern p1 = Pattern.compile("^0\\d{9}$");
+            Matcher matcher1 = p1.matcher(sdt);
+            if (matcher1.matches() == false) {
+                JOptionPane.showMessageDialog(this, "sdt gồm 10 số bắt đầu bằng số 0");
+                return false;
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return true;
+    }
+
+    public boolean checkTrung() {
+        List<Userr> listU = iUserService.selectAll();
+        String ma = txtMaNV.getText();
+        for (Userr u : listU) {
+            if (u.getMa().equals(ma)) {
+                JOptionPane.showMessageDialog(this, "mã không được trùng");
+                return false;
+            }
+        }
+        return true;
+    }
+
+    public void reset() {
+        txtMaNV.setText("");
+        txtTenNV.setText("");
+        txtNgaySinh.setText("");
+        txtSdt.setText("");
+        txtDiaChi.setText("");
+        txtMatKhau.setText("");
+        lbHinhAnh.setText("NO AVATAR");
+    }
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -97,7 +189,6 @@ public class NhanVienPanel extends javax.swing.JPanel {
         jPanel3 = new javax.swing.JPanel();
         jPanel4 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        btnHinhAnh = new javax.swing.JButton();
         btnThemNV = new javax.swing.JButton();
         jLabel10 = new javax.swing.JLabel();
         txtMatKhau = new javax.swing.JTextField();
@@ -135,22 +226,21 @@ public class NhanVienPanel extends javax.swing.JPanel {
         jPanel1.setBackground(new java.awt.Color(204, 255, 255));
 
         lbHinhAnh.setText("NO AVATAR");
+        lbHinhAnh.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lbHinhAnhMouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(41, 41, 41)
-                .addComponent(lbHinhAnh)
-                .addContainerGap(46, Short.MAX_VALUE))
+            .addComponent(lbHinhAnh, javax.swing.GroupLayout.DEFAULT_SIZE, 153, Short.MAX_VALUE)
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(68, 68, 68)
-                .addComponent(lbHinhAnh)
-                .addContainerGap(70, Short.MAX_VALUE))
+            .addComponent(lbHinhAnh, javax.swing.GroupLayout.DEFAULT_SIZE, 154, Short.MAX_VALUE)
         );
 
         buttonGroup1.add(rdoNu);
@@ -275,10 +365,6 @@ public class NhanVienPanel extends javax.swing.JPanel {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        btnHinhAnh.setBackground(new java.awt.Color(204, 255, 255));
-        btnHinhAnh.setIcon(new javax.swing.ImageIcon("D:\\DUAN_1\\DuAn1_QuanLyBanLaptop\\anh\\img.png")); // NOI18N
-        btnHinhAnh.setText("chọn ảnh");
-
         btnThemNV.setBackground(new java.awt.Color(204, 255, 255));
         btnThemNV.setIcon(new javax.swing.ImageIcon("D:\\DUAN_1\\DuAn1_QuanLyBanLaptop\\anh\\Them.png")); // NOI18N
         btnThemNV.setText("Thêm");
@@ -342,12 +428,9 @@ public class NhanVienPanel extends javax.swing.JPanel {
                         .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(198, 198, 198)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(btnHinhAnh)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(btnThemNV, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(32, 32, 32)
-                                .addComponent(btnSuaNV, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(btnThemNV, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(32, 32, 32)
+                        .addComponent(btnSuaNV, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(30, 30, 30)
                         .addComponent(btnXoaNV, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(33, 33, 33)
@@ -391,9 +474,7 @@ public class NhanVienPanel extends javax.swing.JPanel {
                                     .addComponent(jLabel10)
                                     .addComponent(txtMatKhau, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                     .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(btnHinhAnh)
-                .addGap(30, 30, 30)
+                .addGap(68, 68, 68)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnSuaNV, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnXoaNV, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -407,16 +488,20 @@ public class NhanVienPanel extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnXoaFormActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnXoaFormActionPerformed
-        
+
 //        reset();
     }//GEN-LAST:event_btnXoaFormActionPerformed
 
     private void btnThemNVActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThemNVActionPerformed
-        Userr u = getData();
-        String query = iUserService.addUser(u);
-        JOptionPane.showMessageDialog(this, query);
-        loadData(iUserService.selectAll());
-//        reset();
+        if (checkValidate()) {
+            if (checkTrung()) {
+                Userr u = getData();
+                String query = iUserService.addUser(u);
+                JOptionPane.showMessageDialog(this, query);
+                loadData(iUserService.selectAll());
+                reset();
+            }
+        }
     }//GEN-LAST:event_btnThemNVActionPerformed
 
     private void btnSuaNVActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSuaNVActionPerformed
@@ -425,17 +510,21 @@ public class NhanVienPanel extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(this, "Chọn dòng cần sửa");
             return;
         }
-        int confirm = JOptionPane.showConfirmDialog(this,
-                "Xác nhận sửa?", "Thông Báo", JOptionPane.YES_NO_OPTION);
-        if (confirm != JOptionPane.YES_OPTION) {
-            return;
+        if (checkValidate()) {
+            
+                int confirm = JOptionPane.showConfirmDialog(this,
+                        "Xác nhận sửa?", "Thông Báo", JOptionPane.YES_NO_OPTION);
+                if (confirm != JOptionPane.YES_OPTION) {
+                    return;
+                }
+                Userr u = getData();
+                u.setId(iUserService.selectAll().get(row).getId());
+                String query = iUserService.updateUser(u);
+                JOptionPane.showMessageDialog(this, query);
+                loadData(iUserService.selectAll());
+                reset();
+            
         }
-        Userr u = getData();
-        u.setId(iUserService.selectAll().get(row).getId());
-        String query= iUserService.updateUser(u);
-        JOptionPane.showMessageDialog(this, query);
-        loadData(iUserService.selectAll());
-//        reset();
     }//GEN-LAST:event_btnSuaNVActionPerformed
 
     private void tblQLNhanVienMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblQLNhanVienMouseClicked
@@ -444,9 +533,9 @@ public class NhanVienPanel extends javax.swing.JPanel {
         txtMaNV.setText(u.getMa());
         txtTenNV.setText(u.getTen());
         txtNgaySinh.setText(u.getNgaySinh());
-        if(u.isGioiTinh()){
-           rdoNam.setSelected(true);
-        }else{
+        if (u.isGioiTinh()) {
+            rdoNam.setSelected(true);
+        } else {
             rdoNu.setSelected(true);
         }
         txtSdt.setText(u.getSdt());
@@ -454,6 +543,16 @@ public class NhanVienPanel extends javax.swing.JPanel {
         cboChuVu.setSelectedItem(u.getChucVu());
         txtMatKhau.setText(u.getMatKhau());
         lbHinhAnh.setText(u.getHinhAnh());
+//        if (u.getHinhAnh().equalsIgnoreCase("NO AVARTAR")) {
+//            lbHinhAnh.setText("NO AVARTAR");
+//        } else {
+//
+//            lbHinhAnh.setText("");
+//            ImageIcon icon = new ImageIcon(getClass().getResource("..//anh//." + u.getHinhAnh()));
+//            Image image = icon.getImage();
+//            image.getScaledInstance(lbHinhAnh.getWidth(), lbHinhAnh.getHeight(), 0);
+//            lbHinhAnh.setIcon(icon);
+//        }
     }//GEN-LAST:event_tblQLNhanVienMouseClicked
 
     private void btnXoaNVActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnXoaNVActionPerformed
@@ -469,14 +568,34 @@ public class NhanVienPanel extends javax.swing.JPanel {
         }
         Userr u = getData();
         u.setId(iUserService.selectAll().get(row).getId());
-        String query= iUserService.deleteUser(u);
+        String query = iUserService.deleteUser(u);
         JOptionPane.showMessageDialog(this, query);
         loadData(iUserService.selectAll());
+        reset();
     }//GEN-LAST:event_btnXoaNVActionPerformed
+
+    private void lbHinhAnhMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbHinhAnhMouseClicked
+        try {
+            JFileChooser jfc = new JFileChooser("D:\\DUAN_1\\DuAn1_QuanLyBanLaptop\\anh");
+            jfc.showOpenDialog(null);
+            File f = jfc.getSelectedFile();
+            if (f == null) {
+                return;
+            }
+            duongDanAnh = f.getName();
+            Image img = ImageIO.read(f);
+            lbHinhAnh.setText("");
+            int width = lbHinhAnh.getWidth();
+            int height = lbHinhAnh.getHeight();
+            lbHinhAnh.setIcon(new ImageIcon(img.getScaledInstance(width, height, 0)));
+
+        } catch (IOException ex) {
+            System.out.println("ERRO" + ex.toString());
+        }
+    }//GEN-LAST:event_lbHinhAnhMouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnHinhAnh;
     private javax.swing.JButton btnSuaNV;
     private javax.swing.JButton btnThemNV;
     private javax.swing.JButton btnTimKiem;
