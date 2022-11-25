@@ -5,9 +5,9 @@
 package view;
 
 import java.math.BigDecimal;
-import java.sql.Date;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
@@ -565,7 +565,7 @@ public class BanHangPanel extends javax.swing.JPanel {
     private void btnTaoHoaDonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTaoHoaDonActionPerformed
         HoaDon hd = new HoaDon();
         String ma = "HD" + ihdSer.genMaHD();
-        Date ngayTao = (Date) java.util.Calendar.getInstance().getTime();
+        Date ngayTao =java.util.Calendar.getInstance().getTime();
         int trangThai = 1;
         hd.setMa(ma);
         hd.setNgayTao(ngayTao);

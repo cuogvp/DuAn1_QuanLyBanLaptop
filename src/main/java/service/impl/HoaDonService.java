@@ -16,6 +16,7 @@ import services.IHoaDonService;
  */
 public class HoaDonService implements IHoaDonService{
     private final HoaDonRepository hoaDonRepo = new HoaDonRepository();
+    @Override
     public ArrayList<HoaDon> getList() {
         return (ArrayList<HoaDon>) hoaDonRepo.selectAll();
     }
@@ -48,8 +49,8 @@ public class HoaDonService implements IHoaDonService{
     }
 
     @Override
-    public UUID findByIdHoaDon(String ten) {
-        return hoaDonRepo.findByIdHoaDon(ten);
+    public UUID findByIdKhachHang(String ten) {
+        return hoaDonRepo.findByIdKhachHang(ten);
     }
 
     @Override

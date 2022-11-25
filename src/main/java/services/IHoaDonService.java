@@ -17,6 +17,6 @@ public interface IHoaDonService {
     String addHd(HoaDon hd);
     String deleteHd(HoaDon hd);
     String updateHd(HoaDon hd);
-    UUID findByIdHoaDon(String ten);
+    UUID findByIdKhachHang(String ten);
     public int genMaHD();
 }

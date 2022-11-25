@@ -80,16 +80,17 @@ public class HoaDonRepository {
         return check;
     }
 
-    public UUID findByIdHoaDon(String ten) {
+    public UUID findByIdKhachHang(String ten) {
         UUID uuid;
         try (Session session = HibernateConfig.getFACTORY().openSession()) {
-            String statement = "select h.id from HoaDon h where cp.ten = :ten";
+            String statement = "select h.id from KhachHang h where cp.ten = :ten";
             TypedQuery<UUID> query = session.createQuery(statement, UUID.class);
             query.setParameter("ten", ten);
             uuid = query.getSingleResult();
         }
         return uuid;
     }
+    
 
     public int genMaHD() {
         String maHD = "";
