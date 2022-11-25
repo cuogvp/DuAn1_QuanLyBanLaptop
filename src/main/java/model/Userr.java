@@ -53,5 +53,7 @@ public class Userr {
     @ManyToOne
     @JoinColumn(name = "IDCH")
     private CuaHang cuaHang;
+    @Column(name = "TrangThai")
+    private int trangThai;
 
 }

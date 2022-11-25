@@ -7,10 +7,12 @@ package repository;
 import hibernateConfig.HibernateConfig;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 import javax.persistence.TypedQuery;
 import model.HoaDon;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
+import org.hibernate.query.NativeQuery;
 
 /**
  *
@@ -27,7 +29,10 @@ public class HoaDonRepository {
         }
         return listhd;
     }
-
+    public static void main(String[] args) {
+        List<HoaDon> list = new HoaDonRepository().selectAll();
+        System.out.println(list);
+    }
     public Boolean add(HoaDon hd) {
         Transaction transaction = null;
         boolean check = false;
@@ -42,7 +47,7 @@ public class HoaDonRepository {
         }
         return check;
     }
-    
+
     public Boolean update(HoaDon hd) {
         Transaction transaction = null;
         boolean check = false;
@@ -73,5 +78,37 @@ public class HoaDonRepository {
             transaction.rollback();
         }
         return check;
+    }
+
+    public UUID findByIdHoaDon(String ten) {
+        UUID uuid;
+        try (Session session = HibernateConfig.getFACTORY().openSession()) {
+            String statement = "select h.id from HoaDon h where cp.ten = :ten";
+            TypedQuery<UUID> query = session.createQuery(statement, UUID.class);
+            query.setParameter("ten", ten);
+            uuid = query.getSingleResult();
+        }
+        return uuid;
+    }
+
+    public int genMaHD() {
+        String maHD = "";
+        try (Session session = HibernateConfig.getFACTORY().openSession()) {
+            NativeQuery query = session.createNativeQuery("SELECT MAX(CONVERT(INT, SUBSTRING(Ma, 3, 10) )) FROM HoaDon");
+            if (query.getSingleResult() != null) {
+                maHD = query.getSingleResult().toString();
+            } else {
+                maHD = null;
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        if (maHD == null) {
+            maHD = "0";
+            int ma = Integer.valueOf(maHD);
+            return ++ma;
+        }
+        int ma = Integer.valueOf(maHD);
+        return ++ma;
     }
 }

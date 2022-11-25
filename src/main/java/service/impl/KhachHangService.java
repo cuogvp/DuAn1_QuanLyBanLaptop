@@ -44,7 +44,6 @@ public class KhachHangService implements IKhachHangService{
             return "xoa that bai";
         }
     }
-
     @Override
     public List<KhachHang> findAllByName(String name) {
         return repository.findAllByName(name);

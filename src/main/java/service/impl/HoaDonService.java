@@ -5,6 +5,7 @@
 package service.impl;
 
 import java.util.ArrayList;
+import java.util.UUID;
 import model.HoaDon;
 import repository.HoaDonRepository;
 import services.IHoaDonService;
@@ -44,5 +45,15 @@ public class HoaDonService implements IHoaDonService{
         }else{
             return "Update Thất Bại";
         }
+    }
+
+    @Override
+    public UUID findByIdHoaDon(String ten) {
+        return hoaDonRepo.findByIdHoaDon(ten);
+    }
+
+    @Override
+    public int genMaHD() {
+        return hoaDonRepo.genMaHD();
     }
 }

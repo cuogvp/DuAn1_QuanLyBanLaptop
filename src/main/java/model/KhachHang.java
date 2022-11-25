@@ -41,4 +41,6 @@ public class KhachHang {
     private String diaChi;
     @Column(name = "HinhAnh")
     private String hinhAnh;
+    @Column(name = "TrangThai")
+    private int trangThai;
 }

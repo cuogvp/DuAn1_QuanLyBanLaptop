@@ -37,5 +37,7 @@ public class HoaDonChiTiet {
     private String idLaptop;
     @Column(name = "IDBaoHanh")
     private String idBaoHanh;
+    @Column(name = "TrangThai")
+    private int trangThai;
     
 }

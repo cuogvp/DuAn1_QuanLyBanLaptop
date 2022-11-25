@@ -5,6 +5,7 @@
 package services;
 
 import java.util.ArrayList;
+import java.util.UUID;
 import model.HoaDon;
 
 /**
@@ -16,4 +17,6 @@ public interface IHoaDonService {
     String addHd(HoaDon hd);
     String deleteHd(HoaDon hd);
     String updateHd(HoaDon hd);
+    UUID findByIdHoaDon(String ten);
+    public int genMaHD();
 }

@@ -33,7 +33,7 @@ public class KhuyenMai {
     private String ma;
     @Column(name = "Ten")
     private String ten;
-    @Column(name = "NgayBĐ")
+    @Column(name = "NgayBD")
     private String ngayBD;
     @Column(name = "NgayHetHan")
     private String ngayHH;
@@ -42,4 +42,6 @@ public class KhuyenMai {
     @ManyToOne
     @JoinColumn(name = "IDLaptop")
     private Laptop laptop;
+    @Column(name = "TrangThai")
+    private int trangThai;
 }

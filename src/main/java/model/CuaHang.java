@@ -40,6 +40,8 @@ public class CuaHang {
     private String thanhPho;
     @Column(name = "QuocGia")
     private String quocGia;
+    @Column(name = "TrangThai")
+    private int trangThai;
     @OneToMany(mappedBy = "cuaHang",cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<Userr> listUserr;
 }
