@@ -56,18 +56,12 @@ public class BanHangPanel extends javax.swing.JPanel {
 
     public void clickSanPham() {
         int index = tblSanPham.getSelectedRow();
-
         String masp = tblSanPham.getValueAt(index, 1).toString();
         String tensp = tblSanPham.getValueAt(index, 2).toString();
-       
-//        BigDecimal giaban = tblSanPham.getValueAt(index, 3).toString();
-
-
         Laptop lp = new Laptop();
-
         lp.setMa(masp);
         lp.setTen(tensp);
-//        lp.setGiaBan(giaban);
+        lp.setGiaBan((BigDecimal) tblSanPham.getValueAt(index, 6));
 
         lstv2.add(lp);
         loadTableGioHang(lstv2);
