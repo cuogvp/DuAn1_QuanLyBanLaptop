@@ -33,7 +33,7 @@ public class KhuyenMai {
     private String ma;
     @Column(name = "Ten")
     private String ten;
-    @Column(name = "NgayBD")
+    @Column(name = "NgayBĐ")
     private String ngayBD;
     @Column(name = "NgayHetHan")
     private String ngayHH;
