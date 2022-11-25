@@ -5,6 +5,7 @@
 package service.impl;
 
 import java.util.ArrayList;
+import java.util.List;
 import model.Laptop;
 import repository.TTSPRepository;
 import services.ITTSPService;
@@ -19,5 +20,10 @@ public class TTSPService implements ITTSPService {
     @Override
     public ArrayList<Laptop> getList() {
         return (ArrayList<Laptop>)ttspRepo.selectAll();
+    }
+
+    @Override
+    public List<Laptop> findAllByName(String name) {
+        return  ttspRepo.findAllByName(name);
     }
 }

@@ -5,7 +5,9 @@
 package repository;
 
 import hibernateConfig.HibernateConfig;
+import java.util.ArrayList;
 import java.util.List;
+import javax.persistence.Query;
 import javax.persistence.TypedQuery;
 import model.Laptop;
 import org.hibernate.Session;
@@ -23,5 +25,18 @@ public class TTSPRepository {
             session.close();
         }
         return listTtSp;
+    }
+    public List<Laptop> findAllByName(String name) {
+        List<Laptop> list = new ArrayList<>();
+        try {
+            Session session = HibernateConfig.getFACTORY().openSession();
+            String hql =" FROM Laptop l WHERE l.ten LIKE :name";
+            Query query = session.createQuery(hql);
+            query.setParameter("name","%"+ name+"%");
+            list = query.getResultList();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return list;
     }
 }

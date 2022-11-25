@@ -13,6 +13,7 @@ import model.KhachHang;
 import model.KhuyenMai;
 import model.Laptop;
 import model.Userr;
+import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.cfg.Environment;
@@ -59,7 +60,7 @@ public class HibernateConfig {
     public static SessionFactory getFACTORY() {
         return FACTORY;
     }
-
+    
     public static void main(String[] args) {
         getFACTORY();
     }

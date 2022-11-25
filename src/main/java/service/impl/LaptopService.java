@@ -47,9 +47,11 @@ public class LaptopService implements ILaptopService{
     }
 
     @Override
-    public List<Laptop> findLaptopByName(String ten) {
-           return this.laptopRepository.findLaptopByName(ten);
+    public List<Laptop> findAllByName(String name) {
+        return laptopRepository.findAllByName(name);
     }
+
+    
 
     
 }

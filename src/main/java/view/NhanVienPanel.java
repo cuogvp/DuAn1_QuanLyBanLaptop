@@ -182,7 +182,6 @@ public class NhanVienPanel extends javax.swing.JPanel {
         btnXoaForm = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         txtTimKiem = new javax.swing.JTextField();
-        btnTimKiem = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
         tblQLNhanVien = new javax.swing.JTable();
         cboChuVu = new javax.swing.JComboBox<>();
@@ -278,9 +277,11 @@ public class NhanVienPanel extends javax.swing.JPanel {
 
         jPanel2.setBackground(new java.awt.Color(204, 255, 255));
 
-        btnTimKiem.setBackground(new java.awt.Color(204, 255, 255));
-        btnTimKiem.setIcon(new javax.swing.ImageIcon("D:\\DUAN_1\\DuAn1_QuanLyBanLaptop\\anh\\find.png")); // NOI18N
-        btnTimKiem.setText("Tìm Kiếm");
+        txtTimKiem.addCaretListener(new javax.swing.event.CaretListener() {
+            public void caretUpdate(javax.swing.event.CaretEvent evt) {
+                txtTimKiemCaretUpdate(evt);
+            }
+        });
 
         tblQLNhanVien.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -310,8 +311,6 @@ public class NhanVienPanel extends javax.swing.JPanel {
                     .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 741, Short.MAX_VALUE)
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addComponent(txtTimKiem, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(btnTimKiem)
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
@@ -319,9 +318,7 @@ public class NhanVienPanel extends javax.swing.JPanel {
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtTimKiem, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnTimKiem))
+                .addComponent(txtTimKiem, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(169, 169, 169))
@@ -594,11 +591,14 @@ public class NhanVienPanel extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_lbHinhAnhMouseClicked
 
+    private void txtTimKiemCaretUpdate(javax.swing.event.CaretEvent evt) {//GEN-FIRST:event_txtTimKiemCaretUpdate
+        loadData(iUserService.findAllByName(txtTimKiem.getText()));
+    }//GEN-LAST:event_txtTimKiemCaretUpdate
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnSuaNV;
     private javax.swing.JButton btnThemNV;
-    private javax.swing.JButton btnTimKiem;
     private javax.swing.JButton btnXoaForm;
     private javax.swing.JButton btnXoaNV;
     private javax.swing.ButtonGroup buttonGroup1;

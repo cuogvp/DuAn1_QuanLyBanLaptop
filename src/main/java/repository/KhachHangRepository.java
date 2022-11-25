@@ -5,9 +5,12 @@
 package repository;
 
 import hibernateConfig.HibernateConfig;
+import java.util.ArrayList;
 import java.util.List;
+import javax.persistence.Query;
 import javax.persistence.TypedQuery;
 import model.KhachHang;
+import model.Laptop;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
@@ -70,5 +73,18 @@ public class KhachHangRepository {
             transaction.rollback();
         }
         return check;
+    }
+    public List<KhachHang> findAllByName(String name) {
+        List<KhachHang> listKH = new ArrayList<>();
+        try {
+            Session session = HibernateConfig.getFACTORY().openSession();
+            String hql =" FROM KhachHang l WHERE l.ten LIKE :name";
+            Query query = session.createQuery(hql);
+            query.setParameter("name","%"+ name+"%");
+            listKH = query.getResultList();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return listKH;
     }
 }

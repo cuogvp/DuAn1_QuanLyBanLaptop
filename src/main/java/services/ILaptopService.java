@@ -18,5 +18,5 @@ public interface ILaptopService {
     String addLaptopService(Laptop l);
     String updateLaptopService(Laptop l);
     String deleteLaptopService(Laptop l);
-    List<Laptop> findLaptopByName(String ten);
+    List<Laptop> findAllByName(String name);
 }

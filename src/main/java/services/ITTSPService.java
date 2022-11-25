@@ -5,6 +5,7 @@
 package services;
 
 import java.util.ArrayList;
+import java.util.List;
 import model.Laptop;
 
 /**
@@ -13,4 +14,5 @@ import model.Laptop;
  */
 public interface ITTSPService {
     ArrayList<Laptop> getList();
+    List<Laptop> findAllByName(String name);
 }

@@ -16,4 +16,5 @@ public interface IUserService {
     String addUser(Userr u);
     String updateUser(Userr u);
     String deleteUser(Userr u);
+    List<Userr> findAllByName(String name);
 }
