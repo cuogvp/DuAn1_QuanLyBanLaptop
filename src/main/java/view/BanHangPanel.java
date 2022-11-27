@@ -264,6 +264,11 @@ public class BanHangPanel extends javax.swing.JPanel {
         jScrollPane4.setViewportView(tblGioHang);
 
         jButton1.setText("xóa");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -575,6 +580,11 @@ public class BanHangPanel extends javax.swing.JPanel {
         
         
     }//GEN-LAST:event_btnTaoHoaDonActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        model = (DefaultTableModel) tblGioHang.getModel();
+        model.setRowCount(0);
+    }//GEN-LAST:event_jButton1ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

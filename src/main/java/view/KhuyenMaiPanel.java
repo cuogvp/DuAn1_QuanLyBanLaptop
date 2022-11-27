@@ -98,7 +98,7 @@ public class KhuyenMaiPanel extends javax.swing.JPanel {
         jButton6 = new javax.swing.JButton();
         jLabel9 = new javax.swing.JLabel();
 
-        jPanel3.setBackground(new java.awt.Color(253, 254, 253));
+        jPanel3.setBackground(new java.awt.Color(204, 255, 255));
         jPanel3.setPreferredSize(new java.awt.Dimension(826, 647));
 
         jPanel1.setBackground(new java.awt.Color(47, 144, 193));
@@ -150,19 +150,23 @@ public class KhuyenMaiPanel extends javax.swing.JPanel {
 
         cboTenSP.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
-        btnThem.setBackground(new java.awt.Color(204, 255, 255));
+        btnThem.setBackground(new java.awt.Color(253, 254, 253));
+        btnThem.setIcon(new javax.swing.ImageIcon("D:\\DUAN_1\\DuAn1_QuanLyBanLaptop\\anh\\Them.png")); // NOI18N
         btnThem.setText("Thêm");
 
-        btnSua.setBackground(new java.awt.Color(204, 255, 255));
+        btnSua.setBackground(new java.awt.Color(253, 254, 253));
+        btnSua.setIcon(new javax.swing.ImageIcon("D:\\DUAN_1\\DuAn1_QuanLyBanLaptop\\anh\\update.png")); // NOI18N
         btnSua.setText("Sửa");
 
-        btnXoaForm.setBackground(new java.awt.Color(204, 255, 255));
+        btnXoaForm.setBackground(new java.awt.Color(253, 254, 253));
+        btnXoaForm.setIcon(new javax.swing.ImageIcon("D:\\DUAN_1\\DuAn1_QuanLyBanLaptop\\anh\\clearForm.png")); // NOI18N
         btnXoaForm.setText("xóa Form");
 
-        btnXoa.setBackground(new java.awt.Color(204, 255, 255));
+        btnXoa.setBackground(new java.awt.Color(253, 254, 253));
+        btnXoa.setIcon(new javax.swing.ImageIcon("D:\\DUAN_1\\DuAn1_QuanLyBanLaptop\\anh\\xoa.png")); // NOI18N
         btnXoa.setText("Xóa");
 
-        jPanel2.setBackground(new java.awt.Color(204, 255, 255));
+        jPanel2.setBackground(new java.awt.Color(253, 254, 253));
 
         tblKhuyenMai.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -194,7 +198,7 @@ public class KhuyenMaiPanel extends javax.swing.JPanel {
                 .addContainerGap())
         );
 
-        jPanel5.setBackground(new java.awt.Color(204, 255, 255));
+        jPanel5.setBackground(new java.awt.Color(253, 254, 253));
 
         tblSanPham.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -226,13 +230,13 @@ public class KhuyenMaiPanel extends javax.swing.JPanel {
                 .addContainerGap())
         );
 
-        jButton5.setBackground(new java.awt.Color(204, 255, 255));
+        jButton5.setBackground(new java.awt.Color(253, 254, 253));
         jButton5.setText("Tìm Kiếm");
 
         jLabel8.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel8.setText("Tìm Khuyến Mãi");
 
-        jButton6.setBackground(new java.awt.Color(204, 255, 255));
+        jButton6.setBackground(new java.awt.Color(253, 254, 253));
         jButton6.setText("Tìm Kiếm");
 
         jLabel9.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N

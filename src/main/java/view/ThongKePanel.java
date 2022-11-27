@@ -56,7 +56,7 @@ public class ThongKePanel extends javax.swing.JPanel {
         jButton2 = new javax.swing.JButton();
         jLabel13 = new javax.swing.JLabel();
 
-        jPanel3.setBackground(new java.awt.Color(253, 254, 253));
+        jPanel3.setBackground(new java.awt.Color(204, 255, 255));
         jPanel3.setPreferredSize(new java.awt.Dimension(826, 647));
 
         jPanel1.setBackground(new java.awt.Color(47, 144, 193));
@@ -96,7 +96,7 @@ public class ThongKePanel extends javax.swing.JPanel {
 
         jPanel2.setBackground(new java.awt.Color(255, 255, 204));
 
-        jPanel5.setBackground(new java.awt.Color(204, 255, 255));
+        jPanel5.setBackground(new java.awt.Color(253, 254, 253));
 
         jLabel5.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel5.setText("Tổng đơn Hàng");
@@ -127,7 +127,7 @@ public class ThongKePanel extends javax.swing.JPanel {
                 .addContainerGap(37, Short.MAX_VALUE))
         );
 
-        jPanel6.setBackground(new java.awt.Color(204, 255, 255));
+        jPanel6.setBackground(new java.awt.Color(253, 254, 253));
 
         jLabel6.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel6.setText("Doanh thu tuần");
@@ -158,7 +158,7 @@ public class ThongKePanel extends javax.swing.JPanel {
                 .addContainerGap(37, Short.MAX_VALUE))
         );
 
-        jPanel7.setBackground(new java.awt.Color(204, 255, 255));
+        jPanel7.setBackground(new java.awt.Color(253, 254, 253));
 
         jLabel7.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel7.setText("Doanh thu tháng");
@@ -189,7 +189,7 @@ public class ThongKePanel extends javax.swing.JPanel {
                 .addContainerGap(37, Short.MAX_VALUE))
         );
 
-        jPanel8.setBackground(new java.awt.Color(204, 255, 255));
+        jPanel8.setBackground(new java.awt.Color(253, 254, 253));
 
         jLabel8.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel8.setText("Doanh thu năm");
