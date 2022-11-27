@@ -70,11 +70,11 @@ public class NhanVienPanel extends javax.swing.JPanel {
         String matKhau = txtMatKhau.getText().trim();
         u.setMatKhau(matKhau);
 
-//        String anhNV = duongDanAnh;
-//        if (duongDanAnh == "") {
-//            anhNV = "NO AVARTAR";
-//        }
-        u.setHinhAnh("NO AVARTAR");
+        String anhNV = duongDanAnh;
+        if (duongDanAnh == "") {
+            anhNV = "NO AVARTAR";
+        }
+        u.setHinhAnh(anhNV);
         return u;
 
     }
@@ -151,7 +151,8 @@ public class NhanVienPanel extends javax.swing.JPanel {
         txtSdt.setText("");
         txtDiaChi.setText("");
         txtMatKhau.setText("");
-        lbHinhAnh.setText("NO AVATAR");
+        lbHinhAnh.setText("");
+        lbHinhAnh.setText(null);
     }
 
     @SuppressWarnings("unchecked")
@@ -499,7 +500,7 @@ public class NhanVienPanel extends javax.swing.JPanel {
                 .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+                .addGap(0, 13, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -516,7 +517,7 @@ public class NhanVienPanel extends javax.swing.JPanel {
 
     private void btnXoaFormActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnXoaFormActionPerformed
 
-//        reset();
+        reset();
     }//GEN-LAST:event_btnXoaFormActionPerformed
 
     private void btnThemNVActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThemNVActionPerformed
@@ -538,19 +539,19 @@ public class NhanVienPanel extends javax.swing.JPanel {
             return;
         }
         if (checkValidate()) {
-            
-                int confirm = JOptionPane.showConfirmDialog(this,
-                        "Xác nhận sửa?", "Thông Báo", JOptionPane.YES_NO_OPTION);
-                if (confirm != JOptionPane.YES_OPTION) {
-                    return;
-                }
-                Userr u = getData();
-                u.setId(iUserService.selectAll().get(row).getId());
-                String query = iUserService.updateUser(u);
-                JOptionPane.showMessageDialog(this, query);
-                loadData(iUserService.selectAll());
-                reset();
-            
+
+            int confirm = JOptionPane.showConfirmDialog(this,
+                    "Xác nhận sửa?", "Thông Báo", JOptionPane.YES_NO_OPTION);
+            if (confirm != JOptionPane.YES_OPTION) {
+                return;
+            }
+            Userr u = getData();
+            u.setId(iUserService.selectAll().get(row).getId());
+            String query = iUserService.updateUser(u);
+            JOptionPane.showMessageDialog(this, query);
+            loadData(iUserService.selectAll());
+            reset();
+
         }
     }//GEN-LAST:event_btnSuaNVActionPerformed
 
@@ -570,16 +571,15 @@ public class NhanVienPanel extends javax.swing.JPanel {
         cboChuVu.setSelectedItem(u.getChucVu());
         txtMatKhau.setText(u.getMatKhau());
         lbHinhAnh.setText(u.getHinhAnh());
-//        if (u.getHinhAnh().equalsIgnoreCase("NO AVARTAR")) {
-//            lbHinhAnh.setText("NO AVARTAR");
-//        } else {
-//
-//            lbHinhAnh.setText("");
-//            ImageIcon icon = new ImageIcon(getClass().getResource("..//anh//." + u.getHinhAnh()));
-//            Image image = icon.getImage();
-//            image.getScaledInstance(lbHinhAnh.getWidth(), lbHinhAnh.getHeight(), 0);
-//            lbHinhAnh.setIcon(icon);
-//        }
+        lbHinhAnh.setText(u.getHinhAnh());
+        if (u.getHinhAnh().equalsIgnoreCase("NO AVARTAR")) {
+            lbHinhAnh.setText("NO AVARTAR");
+            lbHinhAnh.setIcon(null);
+        } else {
+            lbHinhAnh.setText("");
+            Image image = new ImageIcon(u.getHinhAnh()).getImage();
+            lbHinhAnh.setIcon(new ImageIcon(image.getScaledInstance(lbHinhAnh.getWidth(), lbHinhAnh.getHeight(), Image.SCALE_SMOOTH)));
+        }
     }//GEN-LAST:event_tblQLNhanVienMouseClicked
 
     private void btnXoaNVActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnXoaNVActionPerformed
@@ -609,7 +609,7 @@ public class NhanVienPanel extends javax.swing.JPanel {
             if (f == null) {
                 return;
             }
-            duongDanAnh = f.getName();
+            duongDanAnh = f.getAbsolutePath();
             Image img = ImageIO.read(f);
             lbHinhAnh.setText("");
             int width = lbHinhAnh.getWidth();

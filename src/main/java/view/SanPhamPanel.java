@@ -56,7 +56,7 @@ public class SanPhamPanel extends javax.swing.JPanel {
         txtGiaBan.setText("");
         txtMoTa.setText("");
         txtTrangThai.setText("");
-        lbHinhAnh.setText("NO AVATAR");
+        lbHinhAnh.setText("");
         lbHinhAnh.setIcon(null);
     }
 

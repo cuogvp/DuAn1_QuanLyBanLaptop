@@ -193,6 +193,7 @@ public class BanHangPanel extends javax.swing.JPanel {
             .addGap(0, 31, Short.MAX_VALUE)
         );
 
+        jPanel2.setBackground(new java.awt.Color(204, 255, 255));
         jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Tạo hóa đơn", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 1, 12))); // NOI18N
 
         tblHoaDon.setModel(new javax.swing.table.DefaultTableModel(
@@ -213,7 +214,7 @@ public class BanHangPanel extends javax.swing.JPanel {
         });
         jScrollPane3.setViewportView(tblHoaDon);
 
-        btnTaoHoaDon.setBackground(new java.awt.Color(204, 255, 255));
+        btnTaoHoaDon.setBackground(new java.awt.Color(253, 254, 253));
         btnTaoHoaDon.setText("Tạo hóa đơn");
         btnTaoHoaDon.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -243,6 +244,7 @@ public class BanHangPanel extends javax.swing.JPanel {
                 .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
+        jPanel3.setBackground(new java.awt.Color(204, 255, 255));
         jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Giỏi Hàng", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 1, 12))); // NOI18N
 
         tblGioHang.setModel(new javax.swing.table.DefaultTableModel(
@@ -263,6 +265,7 @@ public class BanHangPanel extends javax.swing.JPanel {
         });
         jScrollPane4.setViewportView(tblGioHang);
 
+        jButton1.setBackground(new java.awt.Color(253, 254, 253));
         jButton1.setText("xóa");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -292,6 +295,7 @@ public class BanHangPanel extends javax.swing.JPanel {
                 .addContainerGap())
         );
 
+        jPanel5.setBackground(new java.awt.Color(204, 255, 255));
         jPanel5.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Sản Phẩm", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 1, 12))); // NOI18N
 
         tblSanPham.setModel(new javax.swing.table.DefaultTableModel(
@@ -338,6 +342,7 @@ public class BanHangPanel extends javax.swing.JPanel {
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
+        jPanel6.setBackground(new java.awt.Color(204, 255, 255));
         jPanel6.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Hóa đơn", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 1, 12))); // NOI18N
 
         jLabel2.setText("Mã HD");
@@ -358,7 +363,7 @@ public class BanHangPanel extends javax.swing.JPanel {
 
         jLabel9.setText("Tiền thừa");
 
-        btnThanhToan.setBackground(new java.awt.Color(204, 255, 255));
+        btnThanhToan.setBackground(new java.awt.Color(253, 254, 253));
         btnThanhToan.setText("Thanh Toán");
         btnThanhToan.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
