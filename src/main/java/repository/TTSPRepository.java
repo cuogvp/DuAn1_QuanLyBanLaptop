@@ -9,8 +9,10 @@ import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.Query;
 import javax.persistence.TypedQuery;
+import model.HoaDon;
 import model.Laptop;
 import org.hibernate.Session;
+import org.hibernate.Transaction;
 
 /**
  *
@@ -38,5 +40,20 @@ public class TTSPRepository {
             e.printStackTrace();
         }
         return list;
+    }
+    public Boolean update(Laptop l) {
+        Transaction transaction = null;
+        boolean check = false;
+        try (Session session = HibernateConfig.getFACTORY().openSession()) {
+            transaction = session.beginTransaction();
+            session.saveOrUpdate(l);
+            transaction.commit();
+            check = true;
+
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            transaction.rollback();
+        }
+        return check;
     }
 }

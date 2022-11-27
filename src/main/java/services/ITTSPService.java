@@ -15,4 +15,5 @@ import model.Laptop;
 public interface ITTSPService {
     ArrayList<Laptop> getList();
     List<Laptop> findAllByName(String name);
+    Boolean update(Laptop l);
 }

@@ -14,15 +14,20 @@ import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import model.GetUser;
 import model.HoaDon;
+import model.HoaDonChiTiet;
 import model.KhachHang;
 import model.Laptop;
 import model.User;
 import model.Userr;
+import service.impl.HoaDonCTService;
 import service.impl.HoaDonService;
 import service.impl.KhachHangService;
+import service.impl.LaptopService;
 import service.impl.TTSPService;
+import services.IHoaDonChiTietService;
 import services.IHoaDonService;
 import services.IKhachHangService;
+import services.ILaptopService;
 import services.ITTSPService;
 
 /**
@@ -33,11 +38,13 @@ public class BanHangPanel extends javax.swing.JPanel {
 
     private ITTSPService ittspSer = new TTSPService();
     private IHoaDonService ihdSer = new HoaDonService();
+    private ILaptopService iLaptopService = new LaptopService();
+    private IHoaDonChiTietService iHoaDonCTService = new HoaDonCTService();
     private IKhachHangService iKhachHangService = new KhachHangService();
     private DefaultTableModel model;
     private List<KhachHang> listKH;
     DefaultTableModel tblModelv2;
-    ArrayList<Laptop> lstv2 = new ArrayList<>();
+    ArrayList<Laptop> listLp = new ArrayList<>();
 
     public BanHangPanel() {
         initComponents();
@@ -55,7 +62,7 @@ public class BanHangPanel extends javax.swing.JPanel {
             if (lt.getTrangThai() == 1) {
                 model.addRow(new Object[]{index, lt.getMa(),
                     lt.getTen(), lt.getImei(), lt.getCpu(), lt.getRam(),
-                    lt.getGiaBan(), lt.getMoTa()});
+                    lt.getGiaBan(), lt.getMoTa(),lt.getTrangThai() == 1 ? "còn hàng" : "đã bán"});
                     index++;
             }
         }
@@ -87,8 +94,8 @@ public class BanHangPanel extends javax.swing.JPanel {
         lp.setMa(masp);
         lp.setTen(tensp);
         lp.setGiaBan((BigDecimal) tblSanPham.getValueAt(index, 6));
-        lstv2.add(lp);
-        loadTableGioHang(lstv2);
+        listLp.add(lp);
+        loadTableGioHang(listLp);
     }
 
     public void tinhTongTien() {
@@ -109,37 +116,11 @@ public class BanHangPanel extends javax.swing.JPanel {
         model = (DefaultTableModel) tblHoaDon.getModel();
         model.setRowCount(0);
         for (HoaDon hd : listHD) {
-            model.addRow(new Object[]{index, hd.getMa(), hd.getNgayTao(), hd.getTrangThai() == 1 ? "chưa thanh toán" : "đã thanh toán",hd.getUserr().getTen()});
+            model.addRow(new Object[]{index, hd.getMa(),hd.getUserr().getTen(), hd.getNgayTao(), hd.getTrangThai() == 1 ? "chưa thanh toán" : "đã thanh toán"});
             index++;
         }
     }
-    public HoaDon getDataHoaDon(){
-        
-        HoaDon hd = new HoaDon();
-        Userr u = new Userr();
-        KhachHang kh = new KhachHang();
-        
-        String maHD = txtMaHD.getText();
-        hd.setMa(maHD);
-        
-        String ten = txtTenNV.getText().trim();
-        UUID idUser = ihdSer.findByIdUser(ten);
-        kh.setId(idUser);
-        hd.setUserr(u);
-        
-        Date ngayTao = java.util.Calendar.getInstance().getTime();
-        hd.setNgayTao(ngayTao);
-        
-        String khachHang = cboIDKhachHang.getSelectedItem().toString();
-        UUID idKH = ihdSer.findByIdKhachHang(khachHang);
-        kh.setId(idKH);
-        hd.setKhachHang(kh);
-        
-        int trangThai = -1;
-        hd.setTrangThai(trangThai);
-        
-        return hd;
-    }
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -212,15 +193,16 @@ public class BanHangPanel extends javax.swing.JPanel {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(354, 354, 354)
+                .addGap(355, 355, 355)
                 .addComponent(jLabel1)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addGap(0, 26, Short.MAX_VALUE)
-                .addComponent(jLabel1))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel1)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         jPanel4.setBackground(new java.awt.Color(47, 144, 193));
@@ -247,7 +229,7 @@ public class BanHangPanel extends javax.swing.JPanel {
                 {null, null, null, null, null}
             },
             new String [] {
-                "STT", "Mã HD", "Ngày Tạo", "Trang thái", "Tên"
+                "STT", "Mã HD", "Tên NV", "Ngày tạo", "Trạng thái"
             }
         ));
         tblHoaDon.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -383,13 +365,13 @@ public class BanHangPanel extends javax.swing.JPanel {
 
         tblSanPham.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null}
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null}
             },
             new String [] {
-                "STT", "MaSP", "TenSP", "Imei", "CPU", "Ram", "Giá bán", "Mô tả"
+                "STT", "MaSP", "TenSP", "Imei", "CPU", "Ram", "Giá bán", "Mô tả", "Trạng thái"
             }
         ));
         tblSanPham.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -631,18 +613,18 @@ public class BanHangPanel extends javax.swing.JPanel {
     
     private void btnThanhToanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThanhToanActionPerformed
         
-//        String tienKhacDuaStr = txtTienKhachTra.getText().trim();
-//        if (tienKhacDuaStr.equals("")) {
-//            JOptionPane.showMessageDialog(this, "Mời nhập tiền khách trả");
-//            return;
-//        }
-//        BigDecimal tienKhachDua = new BigDecimal(tienKhacDuaStr);
-//        BigDecimal tongTien = new BigDecimal(txtTongTien.getText());
-//        if (tienKhachDua.compareTo(tongTien) == -1) {
-//            JOptionPane.showMessageDialog(this, "Số tiền khách trả không đủ");
-//            return;
-//        }
-
+        String tienKhacDuaStr = txtTienKhachTra.getText().trim();
+        if (tienKhacDuaStr.equals("")) {
+            JOptionPane.showMessageDialog(this, "Mời nhập tiền khách trả");
+            return;
+        }
+        BigDecimal tienKhachDua = new BigDecimal(tienKhacDuaStr);
+        BigDecimal tongTien = new BigDecimal(txtTongTien.getText());
+        if (tienKhachDua.compareTo(tongTien) == -1) {
+            JOptionPane.showMessageDialog(this, "Số tiền khách trả không đủ");
+            return;
+        }
+        
         KhachHang kh = new KhachHang();
         int index = tblHoaDon.getSelectedRow();
         HoaDon hd = ihdSer.getList().get(index);
@@ -653,6 +635,35 @@ public class BanHangPanel extends javax.swing.JPanel {
         hd.setKhachHang(kh);
         ihdSer.updateHd(hd);
         fillTaoHoaDon(ihdSer.getList());
+        listLp.remove(index);
+        
+        
+        int index1 = tblGioHang.getSelectedRow();
+        Laptop lp = ittspSer.getList().get(index1);
+        String ma = txtMaSP.getText().trim();
+        lp.setMa(ma);
+        int trangThai = 0;
+        lp.setTrangThai(trangThai);
+        ittspSer.update(lp);
+        loadDataSP(ittspSer.getList());
+        JOptionPane.showMessageDialog(this, "thanh toán thành công");
+        listLp.clear();
+        
+        
+//        HoaDonChiTiet hdct = new HoaDonChiTiet();
+//        UUID idLaptop = iHoaDonCTService.findByIdLaptop(ma);
+//        lp.setId(idLaptop);
+//        hdct.setLaptop(lp);
+//        
+//        BigDecimal gia = iHoaDonCTService.findByGia(ma);
+//        lp.setGiaBan(gia);
+//        hdct.setDonGia(gia);
+//        
+//        String maHD =txtMaHD.getText().trim();
+//        UUID idHD = iHoaDonCTService.findByIdHoaDon(ma);
+//        hd.setId(idHD);
+//        hdct.setHoaDon(hd);
+//        iHoaDonCTService.addOrUpdateHDCT(hdct);
         
         
     }//GEN-LAST:event_btnThanhToanActionPerformed
@@ -702,8 +713,9 @@ public class BanHangPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_btnTaoHoaDonActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        model = (DefaultTableModel) tblGioHang.getModel();
-        model.setRowCount(0);
+        int index = tblGioHang.getSelectedRow();
+        listLp.remove(index);
+        loadTableGioHang(listLp);
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void rdoTatCaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_rdoTatCaMouseClicked

@@ -49,7 +49,7 @@ public class LaptopRepository {
         boolean check = false;
         try (Session session = HibernateConfig.getFACTORY().openSession()) {
             transaction = session.beginTransaction();
-             session.update(l);
+             session.saveOrUpdate(l);;
             transaction.commit();
             check = true;
 

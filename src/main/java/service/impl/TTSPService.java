@@ -26,4 +26,9 @@ public class TTSPService implements ITTSPService {
     public List<Laptop> findAllByName(String name) {
         return  ttspRepo.findAllByName(name);
     }
+
+    @Override
+    public Boolean update(Laptop l) {
+        return ttspRepo.update(l);
+    }
 }
