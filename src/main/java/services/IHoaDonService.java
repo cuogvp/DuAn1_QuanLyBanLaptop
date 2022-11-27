@@ -5,6 +5,7 @@
 package services;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.UUID;
 import model.HoaDon;
 
@@ -18,5 +19,7 @@ public interface IHoaDonService {
     String deleteHd(HoaDon hd);
     String updateHd(HoaDon hd);
     UUID findByIdKhachHang(String ten);
+    UUID findByIdUser(String ten);
+    List<HoaDon> findAllTrangThai(int trangThai);
     public int genMaHD();
 }

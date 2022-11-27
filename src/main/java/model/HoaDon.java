@@ -6,11 +6,17 @@ package model;
 
 
 import java.util.Date;
+import java.util.List;
 import java.util.UUID;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -58,9 +64,15 @@ public class HoaDon {
     @Column(name = "SoLuong")
     private int soLuong;
     
-    @Column(name = "IDKH")
-    private String idKH;
+    @ManyToOne
+    @JoinColumn(name = "IDKH")
+    private KhachHang khachHang;
     
-    @Column(name = "IDUserr")
-    private String idUserr;
+    @ManyToOne
+    @JoinColumn(name = "IDUserr")
+    private Userr userr;
+    
+    @OneToMany(mappedBy = "hoaDon",
+            cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private List<HoaDonChiTiet> listHDCT;
 }

@@ -5,6 +5,7 @@
 package service.impl;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.UUID;
 import model.HoaDon;
 import repository.HoaDonRepository;
@@ -57,4 +58,17 @@ public class HoaDonService implements IHoaDonService{
     public int genMaHD() {
         return hoaDonRepo.genMaHD();
     }
+
+    @Override
+    public List<HoaDon> findAllTrangThai(int trangThai) {
+        return hoaDonRepo.findAllTrangThai(trangThai);
+    }
+
+    @Override
+    public UUID findByIdUser(String ten) {
+        return hoaDonRepo.findByIdUser(ten);
+    }
+
+    
+    
 }

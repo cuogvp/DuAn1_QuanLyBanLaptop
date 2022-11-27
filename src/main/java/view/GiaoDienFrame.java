@@ -43,14 +43,14 @@ public class GiaoDienFrame extends javax.swing.JFrame {
         listjPanel.add(km);
         listjPanel.add(tk);
         setLocationRelativeTo(null);
-//        if (GetUser.u.getChuVu().equalsIgnoreCase("Nhân viên")) {
-//            btnNhanVien.setEnabled(false);
-//            btnThongKe.setEnabled(false);
-//            btnKhuyenMai.setEnabled(false);
-//            btnSanPham.setEnabled(false);
-//        }
-//        lbtenNhanVien.setText(GetUser.u.getTen());
-//        lbQuanLy.setText(GetUser.u.getChuVu());
+        if (GetUser.u.getChuVu().equalsIgnoreCase("Nhân viên")) {
+            btnNhanVien.setEnabled(false);
+            btnThongKe.setEnabled(false);
+            btnKhuyenMai.setEnabled(false);
+            btnSanPham.setEnabled(false);
+        }
+        lbtenNhanVien.setText(GetUser.u.getTen());
+        lbQuanLy.setText(GetUser.u.getChuVu());
     }
 
     public void showJPanel(int index) {

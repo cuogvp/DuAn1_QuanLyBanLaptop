@@ -8,8 +8,10 @@ import hibernateConfig.HibernateConfig;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
+import javax.persistence.Query;
 import javax.persistence.TypedQuery;
 import model.HoaDon;
+import model.Laptop;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.hibernate.query.NativeQuery;
@@ -53,7 +55,7 @@ public class HoaDonRepository {
         boolean check = false;
         try (Session session = HibernateConfig.getFACTORY().openSession()) {
             transaction = session.beginTransaction();
-            session.update(hd);
+            session.saveOrUpdate(hd);
             transaction.commit();
             check = true;
 
@@ -83,7 +85,7 @@ public class HoaDonRepository {
     public UUID findByIdKhachHang(String ten) {
         UUID uuid;
         try (Session session = HibernateConfig.getFACTORY().openSession()) {
-            String statement = "select h.id from KhachHang h where cp.ten = :ten";
+            String statement = "select kh.id from KhachHang kh where kh.ten = :ten";
             TypedQuery<UUID> query = session.createQuery(statement, UUID.class);
             query.setParameter("ten", ten);
             uuid = query.getSingleResult();
@@ -91,7 +93,30 @@ public class HoaDonRepository {
         return uuid;
     }
     
-
+    public UUID findByIdUser(String ten) {
+        UUID uuid;
+        try (Session session = HibernateConfig.getFACTORY().openSession()) {
+            String statement = "select u.id from Userr u where u.ten = :ten";
+            TypedQuery<UUID> query = session.createQuery(statement, UUID.class);
+            query.setParameter("ten", ten);
+            uuid = query.getSingleResult();
+        }
+        return uuid;
+    }
+    
+    public List<HoaDon> findAllTrangThai(int trangThai) {
+        List<HoaDon> listHD = new ArrayList<>();
+        try {
+            Session session = HibernateConfig.getFACTORY().openSession();
+            String hql =" FROM HoaDon h WHERE h.trangThai = :trangThai";
+            Query query = session.createQuery(hql);
+            query.setParameter("trangThai",trangThai);
+            listHD = query.getResultList();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return listHD;
+    }
     public int genMaHD() {
         String maHD = "";
         try (Session session = HibernateConfig.getFACTORY().openSession()) {

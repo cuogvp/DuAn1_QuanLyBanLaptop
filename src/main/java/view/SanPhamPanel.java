@@ -44,7 +44,7 @@ public class SanPhamPanel extends javax.swing.JPanel {
         for (Laptop l : list) {
             model.addRow(new Object[]{l.getMa(), l.getTen(), l.getImei(), l.getHang(),
                 l.getCpu(), l.getRam(), l.getManHinh(), l.getOCung(), l.getTheLoai(),
-                l.getGiaNhap(), l.getGiaBan(), l.getMoTa(), l.getTrangThai() == 1 ? "còn hàng" : "hết hàng", l.getHinhAnh()});
+                l.getGiaNhap(), l.getGiaBan(), l.getMoTa(), l.getTrangThai() == 1 ? "còn hàng" : "đã bán", l.getHinhAnh()});
         }
     }
 

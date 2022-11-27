@@ -60,7 +60,10 @@ public class Laptop {
     @Column(name = "HinhAnh")
     private String hinhAnh;
    
-
+    @OneToMany(mappedBy = "laptop",
+            cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private List<HoaDonChiTiet> listHDCT;
+    
     @OneToMany(mappedBy = "laptop",
             cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<KhuyenMai> listKM;
