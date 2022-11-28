@@ -23,7 +23,7 @@ import lombok.ToString;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-@ToString
+
 public class KhuyenMai {
     @Id
     @GeneratedValue
@@ -44,4 +44,7 @@ public class KhuyenMai {
     private Laptop laptop;
     @Column(name = "TrangThai")
     private int trangThai;
+
+    
+    
 }

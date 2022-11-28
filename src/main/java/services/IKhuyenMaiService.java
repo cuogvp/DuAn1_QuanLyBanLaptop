@@ -16,4 +16,5 @@ public interface IKhuyenMaiService {
     String addKM(KhuyenMai km);
     String updateKM(KhuyenMai km);
     String deleteKM(KhuyenMai km);
+    List<KhuyenMai> findKhuyenMaiByName(String name);
 }

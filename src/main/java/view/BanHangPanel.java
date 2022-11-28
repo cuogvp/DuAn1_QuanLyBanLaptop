@@ -647,7 +647,8 @@ public class BanHangPanel extends javax.swing.JPanel {
         ittspSer.update(lp);
         loadDataSP(ittspSer.getList());
         JOptionPane.showMessageDialog(this, "thanh toán thành công");
-        listLp.clear();
+        listLp = new ArrayList<>() ;
+        loadTableGioHang(listLp);
         
         
 //        HoaDonChiTiet hdct = new HoaDonChiTiet();

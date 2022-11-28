@@ -5,11 +5,13 @@
 package repository;
 
 import hibernateConfig.HibernateConfig;
+import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.TypedQuery;
 import model.KhuyenMai;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
+import org.hibernate.query.Query;
 
 /**
  *
@@ -70,5 +72,19 @@ public class KhuyenMaiRepository {
             transaction.rollback();
         }
         return check;
+    }
+    public List<KhuyenMai> findKhuyenMaiByName(String name) {
+        List<KhuyenMai> list = new ArrayList<>();
+        try {
+            Session session = HibernateConfig.getFACTORY().openSession();
+            String hql =" FROM KhuyenMai km WHERE km.ten LIKE :name";
+            Query query = session.createQuery(hql);
+            query.setParameter("name","%"+ name+"%");
+            list = query.getResultList();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return list;
+        
     }
 }

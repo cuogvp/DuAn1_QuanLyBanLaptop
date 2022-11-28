@@ -43,7 +43,7 @@ public class SanPhamPanel extends javax.swing.JPanel {
         model.setRowCount(0);
         for (Laptop l : list) {
             model.addRow(new Object[]{l.getMa(), l.getTen(), l.getImei(), l.getHang(),
-                l.getCpu(), l.getRam(), l.getManHinh(), l.getOCung(), l.getTheLoai(),
+                l.getCpu(), l.getRam(), l.getManHinh(), l.getoCung(), l.getTheLoai(),
                 l.getGiaNhap(), l.getGiaBan(), l.getMoTa(), l.getTrangThai() == 1 ? "còn hàng" : "đã bán", l.getHinhAnh()});
         }
     }
@@ -77,7 +77,7 @@ public class SanPhamPanel extends javax.swing.JPanel {
         String manHinh = cboManHinh.getSelectedItem().toString();
         l.setManHinh(manHinh);
         String oCung = cboOCung.getSelectedItem().toString();
-        l.setOCung(oCung);
+        l.setoCung(oCung);
         String theLoai = cboTheLoai.getSelectedItem().toString();
         l.setTheLoai(theLoai);
         String giaNhapStr = txtGiaNhap.getText().trim();
@@ -704,7 +704,7 @@ public class SanPhamPanel extends javax.swing.JPanel {
         cboHang.setSelectedItem(l.getHang());
         cboCPU.setSelectedItem(l.getCpu());
         cboRam.setSelectedItem(l.getRam());
-        cboOCung.setSelectedItem(l.getOCung());
+        cboOCung.setSelectedItem(l.getoCung());
         cboManHinh.setSelectedItem(l.getManHinh());
         cboTheLoai.setSelectedItem(l.getTheLoai());
         txtGiaNhap.setText(String.valueOf(l.getGiaNhap()));

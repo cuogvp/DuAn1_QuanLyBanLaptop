@@ -46,4 +46,9 @@ public class KhuyenMaiService implements IKhuyenMaiService{
         }
     }
 
+    @Override
+    public List<KhuyenMai> findKhuyenMaiByName(String name) {
+        return repository.findKhuyenMaiByName(name);
+    }
+
 }
