@@ -12,7 +12,9 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import javax.persistence.Query;
 import javax.persistence.TypedQuery;
+import model.Laptop;
 import model.User;
 import model.Userr;
 import org.hibernate.Session;
@@ -31,6 +33,19 @@ public class UserRepository {
             session.close();
         }
         return listUs;
+    }
+    public List<Userr> findAllByName(String name) {
+        List<Userr> listU = new ArrayList<>();
+        try {
+            Session session = HibernateConfig.getFACTORY().openSession();
+            String hql =" FROM Userr l WHERE l.ten LIKE :name";
+            Query query = session.createQuery(hql);
+            query.setParameter("name","%"+ name+"%");
+            listU = query.getResultList();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return listU;
     }
    public Boolean addUserrRepo(Userr u) {
         Transaction transaction = null;

@@ -5,6 +5,7 @@
 package model;
 
 import java.math.BigDecimal;
+import java.util.List;
 import java.util.UUID;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -53,5 +54,10 @@ public class Userr {
     @ManyToOne
     @JoinColumn(name = "IDCH")
     private CuaHang cuaHang;
+    @Column(name = "TrangThai")
+    private int trangThai;
+    @OneToMany(mappedBy = "userr",
+            cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private List<HoaDon> listHD;
 
 }

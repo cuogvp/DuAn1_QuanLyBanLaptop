@@ -23,7 +23,7 @@ import lombok.ToString;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-@ToString
+
 public class KhuyenMai {
     @Id
     @GeneratedValue
@@ -42,4 +42,9 @@ public class KhuyenMai {
     @ManyToOne
     @JoinColumn(name = "IDLaptop")
     private Laptop laptop;
+    @Column(name = "TrangThai")
+    private int trangThai;
+
+    
+    
 }

@@ -40,5 +40,7 @@ public class BaoHanh {
     private BigDecimal giaBH;
     @Column(name = "LyDo")
     private String lyDo;
+    @Column(name = "TrangThai")
+    private int trangThai;
     
 }

@@ -8,6 +8,7 @@ import hibernateConfig.HibernateConfig;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
+import javax.persistence.Query;
 import javax.persistence.TypedQuery;
 import model.Laptop;
 import org.hibernate.Session;
@@ -48,7 +49,7 @@ public class LaptopRepository {
         boolean check = false;
         try (Session session = HibernateConfig.getFACTORY().openSession()) {
             transaction = session.beginTransaction();
-             session.update(l);
+             session.saveOrUpdate(l);;
             transaction.commit();
             check = true;
 
@@ -73,14 +74,17 @@ public class LaptopRepository {
         }
         return check;
     }
-    public List<Laptop> findLaptopByName(String ten) {
-        List<Laptop> listsp;
-        try ( Session session = HibernateConfig.getFACTORY().openSession()) {
-            TypedQuery<Laptop> query = session.createQuery("select * from Laptop l where l.ten = :ten");
-            listsp = query.getResultList();
-            session.close();
+    public List<Laptop> findAllByName(String name) {
+        List<Laptop> list = new ArrayList<>();
+        try {
+            Session session = HibernateConfig.getFACTORY().openSession();
+            String hql =" FROM Laptop l WHERE l.ten LIKE :name";
+            Query query = session.createQuery(hql);
+            query.setParameter("name","%"+ name+"%");
+            list = query.getResultList();
+        } catch (Exception e) {
+            e.printStackTrace();
         }
-        return listsp;
-        
+        return list;
     }
 }

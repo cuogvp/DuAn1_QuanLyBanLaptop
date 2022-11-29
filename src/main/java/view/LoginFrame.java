@@ -28,7 +28,17 @@ public class LoginFrame extends javax.swing.JFrame {
 
     }
 
-   
+    public boolean checkValidate(){
+        if(txtTaiKhoan.getText().isBlank()){
+            JOptionPane.showMessageDialog(this, "tài khoản không được để trống");
+            return false;
+        }
+        if(txtMatKhau.getText().isBlank()){
+            JOptionPane.showMessageDialog(this, "mật khẩu không được để trống");
+            return false;
+        }
+        return true;
+    }
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -190,11 +200,13 @@ public class LoginFrame extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
+    
     private void btnDangNhapActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDangNhapActionPerformed
         String ma = txtTaiKhoan.getText();
         String password = new String(txtMatKhau.getPassword());
-        
+            if(checkValidate()== false){
+                return;
+            }
             if (userService.checkLogin(ma, password) != null) {
                 GetUser.u = userService.checkLogin(ma, password);
                 JOptionPane.showMessageDialog(this, "đăng nhập thành công");

@@ -57,4 +57,9 @@ public class UserService implements IUserService{
             return "xoa that bai";
         }
     }
+
+    @Override
+    public List<Userr> findAllByName(String name) {
+        return repository.findAllByName(name);
+    }
 }
