@@ -11,6 +11,7 @@ import java.util.UUID;
 import javax.persistence.Query;
 import javax.persistence.TypedQuery;
 import model.HoaDon;
+import model.HoaDonChiTiet;
 import model.Laptop;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
@@ -31,16 +32,23 @@ public class HoaDonRepository {
         }
         return listhd;
     }
-    public static void main(String[] args) {
-        List<HoaDon> list = new HoaDonRepository().selectAll();
-        System.out.println(list);
+
+    public List<HoaDonChiTiet> selectAllHoaDonChiTiet() {
+        List<HoaDonChiTiet> listhdct;
+        try (Session session = HibernateConfig.getFACTORY().openSession()) {
+            TypedQuery<HoaDonChiTiet> query = session.createQuery("FROM HoaDonChiTiet hdct");
+            listhdct = query.getResultList();
+            session.close();
+        }
+        return listhdct;
     }
+
     public Boolean add(HoaDon hd) {
         Transaction transaction = null;
         boolean check = false;
         try (Session session = HibernateConfig.getFACTORY().openSession()) {
             transaction = session.beginTransaction();
-            session.save(hd);
+            session.saveOrUpdate(hd);
             transaction.commit();
             check = true;
         } catch (Exception e) {
@@ -92,7 +100,43 @@ public class HoaDonRepository {
         }
         return uuid;
     }
-    
+    public Boolean addOrUpdateHDCT(HoaDonChiTiet hdct) {
+        Transaction transaction = null;
+        boolean check = false;
+        try (Session session = HibernateConfig.getFACTORY().openSession()) {
+            transaction = session.beginTransaction();
+            session.saveOrUpdate(hdct);
+            transaction.commit();
+            check = true;
+
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            transaction.rollback();
+        }
+        return check;
+    }
+
+    public UUID findByIdLaptop(String ma) {
+        UUID uuid;
+        try (Session session = HibernateConfig.getFACTORY().openSession()) {
+            String statement = "select l.id from Laptop l where l.ma = :ma";
+            TypedQuery<UUID> query = session.createQuery(statement, UUID.class);
+            query.setParameter("ma", ma);
+            uuid = query.getSingleResult();
+        }
+        return uuid;
+    }
+
+    public UUID findByIdHoaDon(String ma) {
+        UUID uuid;
+        try (Session session = HibernateConfig.getFACTORY().openSession()) {
+            String statement = "select hd.id from HoaDon hd  where hd.ma = :ma";
+            TypedQuery<UUID> query = session.createQuery(statement, UUID.class);
+            query.setParameter("ma", ma);
+            uuid = query.getSingleResult();
+        }
+        return uuid;
+    }
     public UUID findByIdUser(String ten) {
         UUID uuid;
         try (Session session = HibernateConfig.getFACTORY().openSession()) {
@@ -103,20 +147,21 @@ public class HoaDonRepository {
         }
         return uuid;
     }
-    
+
     public List<HoaDon> findAllTrangThai(int trangThai) {
         List<HoaDon> listHD = new ArrayList<>();
         try {
             Session session = HibernateConfig.getFACTORY().openSession();
-            String hql =" FROM HoaDon h WHERE h.trangThai = :trangThai";
+            String hql = " FROM HoaDon h WHERE h.trangThai = :trangThai";
             Query query = session.createQuery(hql);
-            query.setParameter("trangThai",trangThai);
+            query.setParameter("trangThai", trangThai);
             listHD = query.getResultList();
         } catch (Exception e) {
             e.printStackTrace();
         }
         return listHD;
     }
+
     public int genMaHD() {
         String maHD = "";
         try (Session session = HibernateConfig.getFACTORY().openSession()) {
@@ -137,4 +182,6 @@ public class HoaDonRepository {
         int ma = Integer.valueOf(maHD);
         return ++ma;
     }
+
+    
 }

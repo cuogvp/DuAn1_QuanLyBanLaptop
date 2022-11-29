@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 import model.HoaDon;
+import model.HoaDonChiTiet;
 import repository.HoaDonRepository;
 import services.IHoaDonService;
 
@@ -67,6 +68,26 @@ public class HoaDonService implements IHoaDonService{
     @Override
     public UUID findByIdUser(String ten) {
         return hoaDonRepo.findByIdUser(ten);
+    }
+
+    @Override
+    public List<HoaDonChiTiet> selectAllHoaDonChiTiet() {
+        return hoaDonRepo.selectAllHoaDonChiTiet();
+    }
+
+    @Override
+    public Boolean addOrUpdateHDCT(HoaDonChiTiet hdct) {
+        return hoaDonRepo.addOrUpdateHDCT(hdct);
+    }
+
+    @Override
+    public UUID findByIdLaptop(String ma) {
+        return hoaDonRepo.findByIdLaptop(ma);
+    }
+
+    @Override
+    public UUID findByIdHoaDon(String ma) {
+        return hoaDonRepo.findByIdHoaDon(ma);
     }
 
     

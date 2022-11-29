@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 import model.HoaDon;
+import model.HoaDonChiTiet;
 
 /**
  *
@@ -22,4 +23,8 @@ public interface IHoaDonService {
     UUID findByIdUser(String ten);
     List<HoaDon> findAllTrangThai(int trangThai);
     public int genMaHD();
+    List<HoaDonChiTiet> selectAllHoaDonChiTiet();
+    Boolean addOrUpdateHDCT(HoaDonChiTiet hdct);
+    UUID findByIdLaptop(String ma);
+    UUID findByIdHoaDon(String ma);
 }
