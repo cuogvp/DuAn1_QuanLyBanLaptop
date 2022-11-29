@@ -27,14 +27,14 @@ public class GiaoDienFrame extends javax.swing.JFrame {
         KhachHangPanel kh = new KhachHangPanel();
         KhuyenMaiPanel km = new KhuyenMaiPanel();
         ThongKePanel tk = new ThongKePanel();
+        
         this.panel.add(bh);
         this.panel.add(sp);
         this.panel.add(nv);
         this.panel.add(kh);
         this.panel.add(km);
         this.panel.add(tk);
-//        this.setSize(1300, 600);
-//        this.panel.setSize(800, 300);
+
         
         listjPanel.add(bh); // 0
         listjPanel.add(sp); // 1
@@ -42,6 +42,7 @@ public class GiaoDienFrame extends javax.swing.JFrame {
         listjPanel.add(kh);
         listjPanel.add(km);
         listjPanel.add(tk);
+        
         setLocationRelativeTo(null);
         if (GetUser.u.getChuVu().equalsIgnoreCase("Nhân viên")) {
             btnNhanVien.setEnabled(false);

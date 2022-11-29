@@ -4,6 +4,7 @@
  */
 package view;
 
+import static java.lang.String.valueOf;
 import java.math.BigDecimal;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
@@ -86,38 +87,24 @@ public class BanHangPanel extends javax.swing.JPanel {
     }
 
     public void clickSanPham() {
-        int index = tblSanPham.getSelectedRow();
-  
-        Laptop lp =ittspSer.getList().get(index);
-       
-        String masp = tblSanPham.getValueAt(index, 1).toString();
-        String tensp = tblSanPham.getValueAt(index, 2).toString();
-        lp.setGiaBan((BigDecimal) tblSanPham.getValueAt(index, 6));
+       int index = tblSanPham.getSelectedRow();
         
-        HoaDonChiTiet hdct = (HoaDonChiTiet) ihdSer.selectAllHoaDonChiTiet();
+            HoaDonChiTiet hdct = new HoaDonChiTiet();
+            Laptop lp = new Laptop();
+            String maLaptop = tblSanPham.getValueAt(index, 1).toString();
+            String maHd = txtMaHD.getText();
+            double donGia = Double.valueOf(tblSanPham.getValueAt(index, 6).toString());
+            UUID idlaptop = ihdSer.findByIdLaptop(maLaptop);
+            UUID idHd = ihdSer.findByIdHoaDon(maHd);
+            hdct.setIdLaptop(idlaptop);
+            hdct.setIdHoaDon(idHd);
+            hdct.setDonGia(donGia);
+            ihdSer.addOrUpdateHDCT(hdct);
+            loadTableGioHang((ArrayList<HoaDonChiTiet>) ihdSer.selectAllHoaDonChiTiet());
         
-        hdct.getLaptop().getMa();
-        hdct.getLaptop().getTen();
-        hdct.getLaptop().getGiaBan();
-        listhdct.add(hdct);
-        loadTableGioHang((ArrayList<HoaDonChiTiet>) listhdct);
-//        UUID idLaptop = ihdSer.findByIdLaptop(masp);
-//        lp.setId(idLaptop);
-//        hdct.setLaptop(lp);
-//        
-//        String maHD =txtMaHD.getText().trim();
-//        UUID idHD = ihdSer.findByIdHoaDon(maHD);
-//        hdct.setId(idHD);
-//        hdct.setHoaDon(hd);
-//        hdct.setDonGia((BigDecimal) tblSanPham.getValueAt(index, 6));
-//        
-//        listhdct.add(hdct);
-//        ihdSer.addOrUpdateHDCT(hdct);
         
-
-
-
     }
+
 
     public void tinhTongTien() {
         int size = tblGioHang.getRowCount();
@@ -583,10 +570,7 @@ public class BanHangPanel extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void tblGioHangMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblGioHangMouseClicked
-//        int rowGH = tblGioHang.getSelectedRow();
-//        Laptop l = ittspSer.getList().get(rowGH);
-//        txtMaSP.setText(l.getMa());
-//        tinhTongTien();
+
     }//GEN-LAST:event_tblGioHangMouseClicked
 
     private void tblSanPhamMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblSanPhamMouseClicked
@@ -649,29 +633,14 @@ public class BanHangPanel extends javax.swing.JPanel {
         ihdSer.updateHd(hd);
         fillTaoHoaDon(ihdSer.getList());
 
-        int index1 = tblGioHang.getSelectedRow();
-        Laptop lp = ittspSer.getList().get(index1);
-        int trangThai = 0;
-        lp.setTrangThai(trangThai);
-        ittspSer.update(lp);
-        loadDataSP(ittspSer.getList());
+//        int index1 = tblGioHang.getSelectedRow();
+//        Laptop lp = ittspSer.getList().get(index1);
+//        int trangThai = 0;
+//        lp.setTrangThai(trangThai);
+//        ittspSer.update(lp);
+//        loadDataSP(ittspSer.getList());
         JOptionPane.showMessageDialog(this, "thanh toán thành công");
-//        listLp = new ArrayList<>() ;
-//        loadTableGioHang(listLp);
-//        HoaDonChiTiet hdct = new HoaDonChiTiet();
-//        UUID idLaptop = iHoaDonCTService.findByIdLaptop(ma);
-//        lp.setId(idLaptop);
-//        hdct.setLaptop(lp);
-//        
-//        BigDecimal gia = iHoaDonCTService.findByGia(ma);
-//        lp.setGiaBan(gia);
-//        hdct.setDonGia(gia);
-//        
-//        String maHD =txtMaHD.getText().trim();
-//        UUID idHD = iHoaDonCTService.findByIdHoaDon(ma);
-//        hd.setId(idHD);
-//        hdct.setHoaDon(hd);
-//        iHoaDonCTService.addOrUpdateHDCT(hdct);
+
 
     }//GEN-LAST:event_btnThanhToanActionPerformed
 
