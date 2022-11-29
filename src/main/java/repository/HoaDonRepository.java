@@ -42,6 +42,16 @@ public class HoaDonRepository {
         }
         return listhdct;
     }
+    public List<HoaDonChiTiet> selectAllHoaDonChiTiet(String ma) {
+        List<HoaDonChiTiet> listhdct;
+        try (Session session = HibernateConfig.getFACTORY().openSession()) {
+            TypedQuery<HoaDonChiTiet> query = session.createQuery("FROM HoaDonChiTiet hdct WHERE hdct.hoaDon.ma =:ma");
+            query.setParameter("ma", ma);
+            listhdct = query.getResultList();
+            session.close();
+        }
+        return listhdct;
+    }
 
     public Boolean add(HoaDon hd) {
         Transaction transaction = null;

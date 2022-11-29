@@ -90,6 +90,11 @@ public class HoaDonService implements IHoaDonService{
         return hoaDonRepo.findByIdHoaDon(ma);
     }
 
+    @Override
+    public List<HoaDonChiTiet> selectAllHoaDonChiTiet(String ma) {
+        return hoaDonRepo.selectAllHoaDonChiTiet(ma);
+    }
+
     
     
 }

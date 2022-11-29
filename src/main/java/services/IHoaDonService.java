@@ -27,4 +27,5 @@ public interface IHoaDonService {
     Boolean addOrUpdateHDCT(HoaDonChiTiet hdct);
     UUID findByIdLaptop(String ma);
     UUID findByIdHoaDon(String ma);
+    List<HoaDonChiTiet> selectAllHoaDonChiTiet(String ma);
 }
