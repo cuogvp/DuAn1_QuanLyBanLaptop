@@ -73,10 +73,10 @@ public class BanHangPanel extends javax.swing.JPanel {
         model = (DefaultTableModel) tblGioHang.getModel();
         model.setRowCount(0);
         for (HoaDonChiTiet hdct : listhdct) {
-            if(hdct.getTrangThai() ==1){
+            
             model.addRow(new Object[]{index, hdct.getLaptop().getMa(), hdct.getLaptop().getTen(), hdct.getLaptop().getGiaBan()});
             index++;
-            }
+          
         }
     }
 
@@ -96,11 +96,13 @@ public class BanHangPanel extends javax.swing.JPanel {
             String maLaptop = tblSanPham.getValueAt(index, 1).toString();
             String maHd = txtMaHD.getText();
             int trangThai =1;
+            int soluong = 1;
             double donGia = Double.valueOf(tblSanPham.getValueAt(index, 6).toString());
             UUID idlaptop = ihdSer.findByIdLaptop(maLaptop);
             UUID idHd = ihdSer.findByIdHoaDon(maHd);
             hdct.setIdLaptop(idlaptop);
             hdct.setIdHoaDon(idHd);
+            hdct.setSoLuong(soluong);
             hdct.setDonGia(donGia);
             hdct.setTrangThai(trangThai);
             ihdSer.addOrUpdateHDCT(hdct);
@@ -112,6 +114,7 @@ public class BanHangPanel extends javax.swing.JPanel {
 
 
     public void tinhTongTien() {
+        
         int size = tblGioHang.getRowCount();
         BigDecimal tong = new BigDecimal(0);
         int count = 0;
@@ -588,7 +591,13 @@ public class BanHangPanel extends javax.swing.JPanel {
             return;
         }
         clickSanPham();
+        
+        String ma = tblHoaDon.getValueAt(rowhd, 1).toString();
+        model =(DefaultTableModel) tblGioHang.getModel();
+        model.setRowCount(0);
+        loadTableGioHang((ArrayList<HoaDonChiTiet>) ihdSer.selectAllHoaDonChiTiet(ma));
         tinhTongTien();
+        
 
     }//GEN-LAST:event_tblSanPhamMouseClicked
 
@@ -685,7 +694,10 @@ public class BanHangPanel extends javax.swing.JPanel {
         txtNgayTao.setText(String.valueOf(hd.getNgayTao()));
         txtTenNV.setText(GetUser.u.getTen());
         String ma = tblHoaDon.getValueAt(rowHD, 1).toString();
+        model =(DefaultTableModel) tblGioHang.getModel();
+        model.setRowCount(0);
         loadTableGioHang((ArrayList<HoaDonChiTiet>) ihdSer.selectAllHoaDonChiTiet(ma));
+        tinhTongTien();
         
     }//GEN-LAST:event_tblHoaDonMouseClicked
 

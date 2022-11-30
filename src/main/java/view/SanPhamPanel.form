@@ -322,7 +322,7 @@
               <StringArray count="4">
                 <StringItem index="0" value="Acer"/>
                 <StringItem index="1" value="Dell"/>
-                <StringItem index="2" value="Thinkpad"/>
+                <StringItem index="2" value="Lenovo"/>
                 <StringItem index="3" value="TUP"/>
               </StringArray>
             </Property>

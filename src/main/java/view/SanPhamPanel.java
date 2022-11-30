@@ -275,7 +275,7 @@ public class SanPhamPanel extends javax.swing.JPanel {
 
         jLabel10.setText("Hãng");
 
-        cboHang.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Acer", "Dell", "Thinkpad", "TUP" }));
+        cboHang.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Acer", "Dell", "Lenovo", "TUP" }));
 
         jLabel9.setText("CPU");
 
