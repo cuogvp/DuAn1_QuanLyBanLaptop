@@ -4,6 +4,7 @@
  */
 package model;
 
+import java.math.BigDecimal;
 import java.util.List;
 import java.util.UUID;
 import javax.persistence.CascadeType;
@@ -12,20 +13,21 @@ import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import lombok.ToString;
 
 @Entity
-@Table(name = "CuaHang")
+@Table(name = "Hang")
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-@ToString
-public class CuaHang {
+public class Hang {
+
     @Id
     @GeneratedValue
     @Column(name = "Id", columnDefinition = "UNIQUEIDENTIFIER DEFAULT NEWID()")
@@ -34,14 +36,9 @@ public class CuaHang {
     private String ma;
     @Column(name = "Ten")
     private String ten;
-    @Column(name = "DiaChi")
-    private String diaChi;
-    @Column(name = "ThanhPho")
-    private String thanhPho;
-    @Column(name = "QuocGia")
-    private String quocGia;
     @Column(name = "TrangThai")
     private int trangThai;
-    @OneToMany(mappedBy = "cuaHang",cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    private List<Userr> listUserr;
+    @OneToMany(mappedBy = "hang",
+            cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private List<Laptop> listLT;
 }

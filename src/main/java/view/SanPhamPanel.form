@@ -159,7 +159,7 @@
                                   <Group type="103" groupAlignment="0" attributes="0">
                                       <Component id="cboManHinh" min="-2" pref="142" max="-2" attributes="0"/>
                                       <Component id="cboCPU" min="-2" pref="142" max="-2" attributes="0"/>
-                                      <Component id="cboHang" alignment="0" min="-2" pref="142" max="-2" attributes="0"/>
+                                      <Component id="cboIdHang" alignment="0" min="-2" pref="142" max="-2" attributes="0"/>
                                       <Component id="cboOCung" alignment="0" min="-2" pref="142" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
@@ -213,7 +213,7 @@
                       <Group type="102" attributes="0">
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="jLabel10" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="cboHang" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="cboIdHang" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
@@ -316,15 +316,10 @@
             <Property name="text" type="java.lang.String" value="H&#xe3;ng"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JComboBox" name="cboHang">
+        <Component class="javax.swing.JComboBox" name="cboIdHang">
           <Properties>
             <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-              <StringArray count="4">
-                <StringItem index="0" value="Acer"/>
-                <StringItem index="1" value="Dell"/>
-                <StringItem index="2" value="Lenovo"/>
-                <StringItem index="3" value="TUP"/>
-              </StringArray>
+              <StringArray count="0"/>
             </Property>
           </Properties>
           <AuxValues>
@@ -485,7 +480,7 @@
                   <Component id="txtTimKiem" min="-2" max="-2" attributes="0"/>
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                   <Component id="jScrollPane3" min="-2" pref="103" max="-2" attributes="0"/>
-                  <EmptySpace pref="38" max="32767" attributes="0"/>
+                  <EmptySpace pref="36" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -501,7 +496,7 @@
             <Component class="javax.swing.JTable" name="tblQLSanPham">
               <Properties>
                 <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
-                  <Table columnCount="14" rowCount="4">
+                  <Table columnCount="16" rowCount="4">
                     <Column editable="true" title="M&#xe3;" type="java.lang.Object"/>
                     <Column editable="true" title="T&#xea;n S&#x1ea3;n ph&#x1ea9;m" type="java.lang.Object"/>
                     <Column editable="true" title="Imei" type="java.lang.Object"/>
@@ -511,7 +506,9 @@
                     <Column editable="true" title="&#x1ed4; C&#x1ee9;ng" type="java.lang.Object"/>
                     <Column editable="true" title="M&#xe0;n h&#xec;nh" type="java.lang.Object"/>
                     <Column editable="true" title="Th&#x1ec3; lo&#x1ea1;i" type="java.lang.Object"/>
-                    <Column editable="true" title="Gi&#xe1; Nh&#x1ead;p" type="java.lang.Object"/>
+                    <Column editable="true" title="Ng&#xe0;y t&#x1ea1;o" type="java.lang.Object"/>
+                    <Column editable="true" title="Ng&#xe0;y B&#xe1;n" type="java.lang.Object"/>
+                    <Column editable="true" title="Gi&#xe1; nh&#x1ead;p" type="java.lang.Object"/>
                     <Column editable="true" title="Gi&#xe1; B&#xe1;n" type="java.lang.Object"/>
                     <Column editable="true" title="M&#xf4; t&#x1ea3;" type="java.lang.Object"/>
                     <Column editable="true" title="Tr&#x1ea1;ng th&#xe1;i" type="java.lang.Object"/>
@@ -520,6 +517,16 @@
                 </Property>
                 <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">
                   <TableColumnModel selectionModel="0">
+                    <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                      <Title/>
+                      <Editor/>
+                      <Renderer/>
+                    </Column>
+                    <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                      <Title/>
+                      <Editor/>
+                      <Renderer/>
+                    </Column>
                     <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
                       <Title/>
                       <Editor/>

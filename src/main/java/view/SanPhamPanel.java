@@ -10,7 +10,9 @@ import java.awt.Image;
 import java.io.File;
 import java.io.IOException;
 import java.math.BigDecimal;
+import java.util.Date;
 import java.util.List;
+import java.util.UUID;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.imageio.ImageIO;
@@ -19,8 +21,11 @@ import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
+import model.Hang;
 import model.Laptop;
+import service.impl.HangService;
 import service.impl.LaptopService;
+import services.IHangService;
 import services.ILaptopService;
 
 /**
@@ -30,24 +35,35 @@ import services.ILaptopService;
 public class SanPhamPanel extends javax.swing.JPanel {
 
     private ILaptopService iLaptopService = new LaptopService();
+    private IHangService iHangService = new HangService();
     private DefaultTableModel model;
     private String duongDanAnh = "";
+    private List<Hang> listHang;
 
     public SanPhamPanel() {
         initComponents();
         loadTableLaptop(iLaptopService.getList());
+        loadCbbHang();
     }
-
+    private void loadCbbHang() {
+        
+        listHang = iHangService.getList();
+        for (Hang h : listHang) {
+            cboIdHang.addItem(String.valueOf(h.getTen()));
+        }
+    }
     public void loadTableLaptop(List<Laptop> list) {
         model = (DefaultTableModel) tblQLSanPham.getModel();
         model.setRowCount(0);
         for (Laptop l : list) {
-            model.addRow(new Object[]{l.getMa(), l.getTen(), l.getImei(), l.getHang(),
-                l.getCpu(), l.getRam(), l.getManHinh(), l.getoCung(), l.getTheLoai(),
+            model.addRow(new Object[]{l.getMa(), l.getTen(), l.getImei(), l.getHang().getTen(),
+                l.getCpu(), l.getRam(), l.getManHinh(), l.getoCung(), l.getTheLoai(),l.getNgayTao(),l.getNgayBan(),
                 l.getGiaNhap(), l.getGiaBan(), l.getMoTa(), l.getTrangThai() == 1 ? "còn hàng" : "đã bán", l.getHinhAnh()});
         }
     }
-
+    
+    
+    
     public void reset() {
         txtMaLaptop.setText("");
         txtTenLaptop.setText("");
@@ -62,14 +78,20 @@ public class SanPhamPanel extends javax.swing.JPanel {
 
     public Laptop getData() {
         Laptop l = new Laptop();
+        Hang h = new Hang();
+        
         String ma = txtMaLaptop.getText().trim();
         l.setMa(ma);
         String ten = txtTenLaptop.getText().trim();
         l.setTen(ten);
         String imei = txtImei.getText().trim();
         l.setImei(imei);
-        String hang = cboHang.getSelectedItem().toString();
-        l.setHang(hang);
+        
+        String hang = cboIdHang.getSelectedItem().toString();
+        UUID idHang = iLaptopService.findByIdHang(hang);
+        h.setId(idHang);
+        l.setHang(h);
+        
         String cpu = cboCPU.getSelectedItem().toString();
         l.setCpu(cpu);
         String ram = cboRam.getSelectedItem().toString();
@@ -98,6 +120,8 @@ public class SanPhamPanel extends javax.swing.JPanel {
             anhSP = "NO AVARTAR";
         }
         l.setHinhAnh(anhSP);
+        Date ngayTao = java.util.Calendar.getInstance().getTime();
+        l.setNgayTao(ngayTao);
         return l;
     }
 
@@ -214,7 +238,7 @@ public class SanPhamPanel extends javax.swing.JPanel {
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
-        cboHang = new javax.swing.JComboBox<>();
+        cboIdHang = new javax.swing.JComboBox<>();
         jLabel9 = new javax.swing.JLabel();
         cboCPU = new javax.swing.JComboBox<>();
         jLabel12 = new javax.swing.JLabel();
@@ -274,8 +298,6 @@ public class SanPhamPanel extends javax.swing.JPanel {
         jLabel8.setText("Trạng thái");
 
         jLabel10.setText("Hãng");
-
-        cboHang.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Acer", "Dell", "Lenovo", "TUP" }));
 
         jLabel9.setText("CPU");
 
@@ -360,7 +382,7 @@ public class SanPhamPanel extends javax.swing.JPanel {
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(cboManHinh, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(cboCPU, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(cboHang, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(cboIdHang, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(cboOCung, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                                 .addGap(20, 20, 20)
@@ -399,7 +421,7 @@ public class SanPhamPanel extends javax.swing.JPanel {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel10)
-                            .addComponent(cboHang, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(cboIdHang, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel9)
@@ -438,13 +460,13 @@ public class SanPhamPanel extends javax.swing.JPanel {
 
         tblQLSanPham.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null, null, null, null, null, null}
+                {null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null}
             },
             new String [] {
-                "Mã", "Tên Sản phẩm", "Imei", "Hãng", "CPU", "Ram", "Ổ Cứng", "Màn hình", "Thể loại", "Giá Nhập", "Giá Bán", "Mô tả", "Trạng thái", "Hình ảnh"
+                "Mã", "Tên Sản phẩm", "Imei", "Hãng", "CPU", "Ram", "Ổ Cứng", "Màn hình", "Thể loại", "Ngày tạo", "Ngày Bán", "Giá nhập", "Giá Bán", "Mô tả", "Trạng thái", "Hình ảnh"
             }
         ));
         tblQLSanPham.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -478,7 +500,7 @@ public class SanPhamPanel extends javax.swing.JPanel {
                 .addComponent(txtTimKiem, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(38, Short.MAX_VALUE))
+                .addContainerGap(36, Short.MAX_VALUE))
         );
 
         jPanel3.setBackground(new java.awt.Color(47, 144, 193));
@@ -701,7 +723,7 @@ public class SanPhamPanel extends javax.swing.JPanel {
         txtMaLaptop.setText(l.getMa());
         txtTenLaptop.setText(l.getTen());
         txtImei.setText(l.getImei());
-        cboHang.setSelectedItem(l.getHang());
+        cboIdHang.setSelectedItem(l.getHang().getTen());
         cboCPU.setSelectedItem(l.getCpu());
         cboRam.setSelectedItem(l.getRam());
         cboOCung.setSelectedItem(l.getoCung());
@@ -720,7 +742,7 @@ public class SanPhamPanel extends javax.swing.JPanel {
             Image image = new ImageIcon(l.getHinhAnh()).getImage();
             lbHinhAnh.setIcon(new ImageIcon(image.getScaledInstance(lbHinhAnh.getWidth(), lbHinhAnh.getHeight(), Image.SCALE_SMOOTH)));
         }
-        //Ông phải lwu cả đường dẫn
+       
     }//GEN-LAST:event_tblQLSanPhamMouseClicked
 
     private void lbHinhAnhMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbHinhAnhMouseClicked
@@ -759,7 +781,7 @@ public class SanPhamPanel extends javax.swing.JPanel {
     private javax.swing.JButton btnXoa;
     private javax.swing.JButton btnXoaForm;
     private javax.swing.JComboBox<String> cboCPU;
-    private javax.swing.JComboBox<String> cboHang;
+    private javax.swing.JComboBox<String> cboIdHang;
     private javax.swing.JComboBox<String> cboManHinh;
     private javax.swing.JComboBox<String> cboOCung;
     private javax.swing.JComboBox<String> cboRam;

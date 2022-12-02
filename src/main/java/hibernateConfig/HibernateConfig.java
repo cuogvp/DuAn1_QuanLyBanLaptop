@@ -6,7 +6,7 @@ package hibernateConfig;
 
 import java.util.Properties;
 import model.BaoHanh;
-import model.CuaHang;
+import model.Hang;
 import model.HoaDon;
 import model.HoaDonChiTiet;
 import model.KhachHang;
@@ -41,8 +41,8 @@ public class HibernateConfig {
          
         conf.addAnnotatedClass(Laptop.class);
         conf.addAnnotatedClass(Userr.class);
-        conf.addAnnotatedClass(CuaHang.class);
         conf.addAnnotatedClass(KhachHang.class);
+        conf.addAnnotatedClass(Hang.class);
         conf.addAnnotatedClass(HoaDon.class);
         conf.addAnnotatedClass(KhuyenMai.class);
         conf.addAnnotatedClass(BaoHanh.class);
