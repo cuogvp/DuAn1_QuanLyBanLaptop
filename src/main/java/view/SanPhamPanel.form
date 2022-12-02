@@ -140,10 +140,7 @@
                           <Group type="102" alignment="1" attributes="0">
                               <Component id="jLabel14" min="-2" pref="49" max="-2" attributes="0"/>
                               <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="btnXoaForm" min="-2" max="-2" attributes="0"/>
-                                  <Component id="cboTheLoai" min="-2" pref="142" max="-2" attributes="0"/>
-                              </Group>
+                              <Component id="cboTheLoai" min="-2" pref="142" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                       <Group type="102" alignment="0" attributes="0">
@@ -156,11 +153,11 @@
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Group type="102" alignment="0" attributes="0">
                                   <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="cboManHinh" min="-2" pref="142" max="-2" attributes="0"/>
-                                      <Component id="cboCPU" min="-2" pref="142" max="-2" attributes="0"/>
-                                      <Component id="cboIdHang" alignment="0" min="-2" pref="142" max="-2" attributes="0"/>
-                                      <Component id="cboOCung" alignment="0" min="-2" pref="142" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                      <Component id="cboManHinh" pref="142" max="32767" attributes="0"/>
+                                      <Component id="cboCPU" pref="142" max="32767" attributes="0"/>
+                                      <Component id="cboOCung" alignment="0" pref="142" max="32767" attributes="0"/>
+                                      <Component id="cboIdHang" alignment="0" max="32767" attributes="0"/>
                                   </Group>
                               </Group>
                               <Group type="102" alignment="1" attributes="0">
@@ -168,6 +165,11 @@
                                   <Component id="cboRam" min="-2" pref="142" max="-2" attributes="0"/>
                               </Group>
                           </Group>
+                      </Group>
+                      <Group type="102" attributes="0">
+                          <Component id="btnXoaForm" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                          <Component id="btnThemHang" min="-2" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                   <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
@@ -253,7 +255,10 @@
                       </Group>
                       <Group type="102" alignment="1" attributes="0">
                           <EmptySpace max="32767" attributes="0"/>
-                          <Component id="btnXoaForm" min="-2" pref="30" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="btnXoaForm" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
+                              <Component id="btnThemHang" alignment="3" min="-2" max="-2" attributes="0"/>
+                          </Group>
                           <EmptySpace max="-2" attributes="0"/>
                       </Group>
                   </Group>
@@ -322,6 +327,9 @@
               <StringArray count="0"/>
             </Property>
           </Properties>
+          <Events>
+            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="cboIdHangMouseClicked"/>
+          </Events>
           <AuxValues>
             <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
           </AuxValues>
@@ -442,6 +450,17 @@
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnXoaFormActionPerformed"/>
+          </Events>
+        </Component>
+        <Component class="javax.swing.JButton" name="btnThemHang">
+          <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Segoe UI" size="12" style="1"/>
+            </Property>
+            <Property name="text" type="java.lang.String" value="Th&#xea;m H&#xe3;ng"/>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnThemHangActionPerformed"/>
           </Events>
         </Component>
       </SubComponents>

@@ -46,7 +46,7 @@ public class SanPhamPanel extends javax.swing.JPanel {
         loadCbbHang();
     }
     private void loadCbbHang() {
-        
+        cboIdHang.removeAllItems();
         listHang = iHangService.getList();
         for (Hang h : listHang) {
             cboIdHang.addItem(String.valueOf(h.getTen()));
@@ -250,6 +250,7 @@ public class SanPhamPanel extends javax.swing.JPanel {
         jLabel14 = new javax.swing.JLabel();
         cboTheLoai = new javax.swing.JComboBox<>();
         btnXoaForm = new javax.swing.JButton();
+        btnThemHang = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         jScrollPane3 = new javax.swing.JScrollPane();
         tblQLSanPham = new javax.swing.JTable();
@@ -299,6 +300,12 @@ public class SanPhamPanel extends javax.swing.JPanel {
 
         jLabel10.setText("Hãng");
 
+        cboIdHang.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                cboIdHangMouseClicked(evt);
+            }
+        });
+
         jLabel9.setText("CPU");
 
         cboCPU.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "i3", "i5", "i7", "ryzen 5", "ryzen 7" }));
@@ -326,6 +333,14 @@ public class SanPhamPanel extends javax.swing.JPanel {
         btnXoaForm.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnXoaFormActionPerformed(evt);
+            }
+        });
+
+        btnThemHang.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        btnThemHang.setText("Thêm Hãng");
+        btnThemHang.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnThemHangActionPerformed(evt);
             }
         });
 
@@ -367,9 +382,7 @@ public class SanPhamPanel extends javax.swing.JPanel {
                         .addGroup(jPanel1Layout.createSequentialGroup()
                             .addComponent(jLabel14, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGap(26, 26, 26)
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(btnXoaForm)
-                                .addComponent(cboTheLoai, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(cboTheLoai, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -379,14 +392,18 @@ public class SanPhamPanel extends javax.swing.JPanel {
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGap(26, 26, 26)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(cboManHinh, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(cboCPU, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(cboIdHang, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(cboOCung, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(cboManHinh, 0, 142, Short.MAX_VALUE)
+                                    .addComponent(cboCPU, 0, 142, Short.MAX_VALUE)
+                                    .addComponent(cboOCung, 0, 142, Short.MAX_VALUE)
+                                    .addComponent(cboIdHang, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                                 .addGap(20, 20, 20)
-                                .addComponent(cboRam, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                .addComponent(cboRam, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(btnXoaForm)
+                        .addGap(18, 18, 18)
+                        .addComponent(btnThemHang)))
                 .addGap(20, 20, 20))
         );
         jPanel1Layout.setVerticalGroup(
@@ -451,7 +468,9 @@ public class SanPhamPanel extends javax.swing.JPanel {
                         .addContainerGap(26, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btnXoaForm, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(btnXoaForm, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnThemHang))
                         .addContainerGap())))
         );
 
@@ -774,10 +793,20 @@ public class SanPhamPanel extends javax.swing.JPanel {
         loadTableLaptop(iLaptopService.findAllByName(txtTimKiem.getText()));
     }//GEN-LAST:event_txtTimKiemCaretUpdate
 
+    private void btnThemHangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThemHangActionPerformed
+        QLHang qlHang = new QLHang();
+        qlHang.setVisible(true);
+    }//GEN-LAST:event_btnThemHangActionPerformed
+
+    private void cboIdHangMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cboIdHangMouseClicked
+        loadCbbHang();
+    }//GEN-LAST:event_cboIdHangMouseClicked
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnSua;
     private javax.swing.JButton btnThem;
+    private javax.swing.JButton btnThemHang;
     private javax.swing.JButton btnXoa;
     private javax.swing.JButton btnXoaForm;
     private javax.swing.JComboBox<String> cboCPU;

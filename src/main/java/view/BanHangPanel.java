@@ -660,6 +660,8 @@ public class BanHangPanel extends javax.swing.JPanel {
         Laptop lp = ittspSer.getList().get(index1);
         int trangThai = 0;
         lp.setTrangThai(trangThai);
+        Date ngayBan = java.util.Calendar.getInstance().getTime();
+        lp.setNgayBan(ngayBan);
         ittspSer.update(lp);
         loadDataSP(ittspSer.getList());
         
