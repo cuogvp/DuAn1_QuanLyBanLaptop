@@ -51,9 +51,7 @@ public class Userr {
     private String chucVu;
     @Column(name = "HinhAnh")
     private String hinhAnh;
-    @ManyToOne
-    @JoinColumn(name = "IDCH")
-    private CuaHang cuaHang;
+    
     @Column(name = "TrangThai")
     private int trangThai;
     @OneToMany(mappedBy = "userr",

@@ -5,6 +5,7 @@
 package model;
 
 import java.math.BigDecimal;
+import java.util.Date;
 import java.util.List;
 import java.util.UUID;
 import javax.persistence.CascadeType;
@@ -13,6 +14,9 @@ import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.MapsId;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import lombok.AllArgsConstructor;
@@ -31,32 +35,53 @@ public class Laptop {
     @GeneratedValue
     @Column(name = "Id", columnDefinition = "UNIQUEIDENTIFIER DEFAULT NEWID()")
     private UUID id;
+    
     @Column(name = "Imei")
     private String imei;
+    
     @Column(name = "Ma")
     private String ma;
+    
     @Column(name = "Ten")
     private String ten;
-    @Column(name = "Hang")
-    private String hang;
+    
+    @ManyToOne
+    @JoinColumn(name = "IdHang")
+    private Hang hang;
+    
     @Column(name = "CPU")
     private String cpu;
+    
     @Column(name = "Ram")
     private String ram;
+    
     @Column(name = "Ocung")
     private String oCung;
+    
     @Column(name = "ManHinh")
     private String manHinh;
+    
     @Column(name = "TheLoai")
     private String theLoai;
+    
+    @Column(name = "NgayTao")
+    private Date ngayTao;
+    
+    @Column(name = "NgayBan")
+    private Date ngayBan;
+    
     @Column(name = "GiaNhap")
     private BigDecimal giaNhap;
+    
     @Column(name = "GiaBan")
     private BigDecimal giaBan;
+    
     @Column(name = "MoTa")
     private String moTa;
+    
     @Column(name = "TrangThai")
     private int trangThai;
+    
     @Column(name = "HinhAnh")
     private String hinhAnh;
    
@@ -71,7 +96,7 @@ public class Laptop {
     public Laptop() {
     }
 
-    public Laptop(UUID id, String imei, String ma, String ten, String hang, String cpu, String ram, String oCung, String manHinh, String theLoai, BigDecimal giaNhap, BigDecimal giaBan, String moTa, int trangThai, String hinhAnh, List<HoaDonChiTiet> listHDCT, List<KhuyenMai> listKM) {
+    public Laptop(UUID id, String imei, String ma, String ten, Hang hang, String cpu, String ram, String oCung, String manHinh, String theLoai, Date ngayTao, Date ngayBan, BigDecimal giaNhap, BigDecimal giaBan, String moTa, int trangThai, String hinhAnh, List<HoaDonChiTiet> listHDCT, List<KhuyenMai> listKM) {
         this.id = id;
         this.imei = imei;
         this.ma = ma;
@@ -82,6 +107,8 @@ public class Laptop {
         this.oCung = oCung;
         this.manHinh = manHinh;
         this.theLoai = theLoai;
+        this.ngayTao = ngayTao;
+        this.ngayBan = ngayBan;
         this.giaNhap = giaNhap;
         this.giaBan = giaBan;
         this.moTa = moTa;
@@ -123,11 +150,11 @@ public class Laptop {
         this.ten = ten;
     }
 
-    public String getHang() {
+    public Hang getHang() {
         return hang;
     }
 
-    public void setHang(String hang) {
+    public void setHang(Hang hang) {
         this.hang = hang;
     }
 
@@ -169,6 +196,22 @@ public class Laptop {
 
     public void setTheLoai(String theLoai) {
         this.theLoai = theLoai;
+    }
+
+    public Date getNgayTao() {
+        return ngayTao;
+    }
+
+    public void setNgayTao(Date ngayTao) {
+        this.ngayTao = ngayTao;
+    }
+
+    public Date getNgayBan() {
+        return ngayBan;
+    }
+
+    public void setNgayBan(Date ngayBan) {
+        this.ngayBan = ngayBan;
     }
 
     public BigDecimal getGiaNhap() {
@@ -227,10 +270,16 @@ public class Laptop {
         this.listKM = listKM;
     }
 
+    
+
     @Override
     public String toString() {
-        return ten;
+        return ten ;
     }
+   
+   
+
+    
 
     
     

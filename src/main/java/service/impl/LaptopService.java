@@ -51,6 +51,11 @@ public class LaptopService implements ILaptopService{
         return laptopRepository.findAllByName(name);
     }
 
+    @Override
+    public UUID findByIdHang(String ten) {
+        return laptopRepository.findByIdHang(ten);
+    }
+
     
 
     
