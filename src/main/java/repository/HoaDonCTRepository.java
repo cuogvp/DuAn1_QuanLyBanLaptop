@@ -7,6 +7,7 @@ package repository;
 import model.HoaDonChiTiet;
 import hibernateConfig.HibernateConfig;
 import hibernateConfig.JdbcUltil;
+import java.math.BigDecimal;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -31,5 +32,49 @@ public class HoaDonCTRepository {
             session.close();
         }
         return listHoaDonCT;
+    }
+    // tin
+    public BigDecimal doanhThuTheoNgay(){
+        BigDecimal result = null;
+        Transaction transaction = null;
+        try ( Session session = HibernateConfig.getFACTORY().openSession()) {
+            transaction = session.beginTransaction();
+            Query query = session.createSQLQuery("SELECT SUM(HoaDonChitiet.SoLuong*DonGia) AS DoanhThu From HoaDonChiTiet\n"
+                    +"join HoaDon on HoaDonChiTiet.IDHoaDon = HoaDon.ID Where\n"
+                    + "HoaDonChitiet.SoLuong >0 AND HoaDonChitiet.TrangThai = 1\n"
+                    + "And DAY(HoaDon.NgayNhanHang) = Day(GETDATE())");
+            result = (BigDecimal) query.getResultList().get(0);
+            transaction.commit();
+        }
+        return result;
+    }
+    
+    public BigDecimal doanhThuTheoThang(int thang){
+        BigDecimal result = null;
+        Transaction transaction = null;
+        try ( Session session = HibernateConfig.getFACTORY().openSession()) {
+            transaction = session.beginTransaction();
+            Query query = session.createSQLQuery("SELECT SUM(HoaDonChitiet.SoLuong*DonGia) AS DoanhThu From HoaDonChiTiet\n"
+                    +"join HoaDon on HoaDonChiTiet.IDHoaDon = HoaDon.ID Where\n"
+                    + "HoaDonChitiet.SoLuong >0 AND HoaDonChitiet.TrangThai = 1\n"
+                    + "And MONTH(HoaDon.NgayNhanHang) = " +thang);
+            result = (BigDecimal) query.getResultList().get(0);
+            transaction.commit();
+        }
+        return result;
+    }
+    public BigDecimal doanhThuTheoNam(){
+        BigDecimal result = null;
+        Transaction transaction = null;
+        try ( Session session = HibernateConfig.getFACTORY().openSession()) {
+            transaction = session.beginTransaction();
+            Query query = session.createSQLQuery("SELECT SUM(HoaDonChitiet.SoLuong*DonGia) AS DoanhThu From HoaDonChiTiet\n"
+                    +"join HoaDon on HoaDonChiTiet.IDHoaDon = HoaDon.ID Where\n"
+                    + "HoaDonChitiet.SoLuong >0 AND HoaDonChitiet.TrangThai = 1\n"
+                    + "And YEAR(HoaDon.NgayNhanHang )= YEAR(GETDATE())");
+            result = (BigDecimal) query.getResultList().get(0);
+            transaction.commit();
+        }
+        return result;
     }
 }

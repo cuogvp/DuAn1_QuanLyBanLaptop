@@ -26,7 +26,7 @@ public class HoaDonRepository {
     public List<HoaDon> selectAll() {
         List<HoaDon> listhd;
         try (Session session = HibernateConfig.getFACTORY().openSession()) {
-            TypedQuery<HoaDon> query = session.createQuery("FROM HoaDon");
+            TypedQuery<HoaDon> query = session.createQuery("FROM HoaDon h");
             listhd = query.getResultList();
             session.close();
         }

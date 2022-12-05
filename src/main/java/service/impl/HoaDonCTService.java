@@ -4,6 +4,7 @@
  */
 package service.impl;
 
+import java.math.BigDecimal;
 import java.util.List;
 import model.HoaDonChiTiet;
 import repository.HoaDonCTRepository;
@@ -19,6 +20,21 @@ public class HoaDonCTService implements IHoaDonCTService{
     @Override
     public List<HoaDonChiTiet> getList() {
         return repository.selectAll();
+    }
+
+    @Override
+    public BigDecimal doanhThuTheoNgay() {
+        return repository.doanhThuTheoNgay();
+    }
+
+    @Override
+    public BigDecimal doanhThuTheoThang(int thang) {
+        return repository.doanhThuTheoThang(thang);
+    }
+
+    @Override
+    public BigDecimal doanhThuTheoNam() {
+        return repository.doanhThuTheoNam();
     }
     
 }

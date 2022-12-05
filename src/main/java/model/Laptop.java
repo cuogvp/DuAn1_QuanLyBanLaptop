@@ -245,7 +245,18 @@ public class Laptop {
     public void setTrangThai(int trangThai) {
         this.trangThai = trangThai;
     }
-
+    
+    public String getTrangThaiSTR(int trangThai){
+        if(trangThai ==1){
+            return "còn hàng";
+        }else if(trangThai == 0){
+            return "đã bán";
+        }else{
+            return "tồn kho";
+        }
+    }
+    
+    
     public String getHinhAnh() {
         return hinhAnh;
     }

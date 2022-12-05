@@ -56,6 +56,21 @@ public class LaptopService implements ILaptopService{
         return laptopRepository.findByIdHang(ten);
     }
 
+    @Override
+    public List<Laptop> countLaptopByTrangThai() {
+        return laptopRepository.countLaptopByTrangThai();
+    }
+
+    @Override
+    public List<Laptop> countLaptopByTrangThaiDBan() {
+        return laptopRepository.countLaptopByTrangThaiDBan();
+    }
+
+    @Override
+    public List<Laptop> countLaptopByTrangThaiTon() {
+        return laptopRepository.countLaptopByTrangThaiTon();
+    }
+
     
 
     

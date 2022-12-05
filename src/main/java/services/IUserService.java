@@ -5,6 +5,7 @@
 package services;
 
 import java.util.List;
+import model.Laptop;
 import model.Userr;
 
 /**
@@ -17,4 +18,5 @@ public interface IUserService {
     String updateUser(Userr u);
     String deleteUser(Userr u);
     List<Userr> findAllByName(String name);
+   
 }
