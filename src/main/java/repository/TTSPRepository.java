@@ -28,11 +28,22 @@ public class TTSPRepository {
         }
         return listTtSp;
     }
+    public List<Laptop> selectAllByTrangThai() {
+        List<Laptop> listTtSp;
+        try ( Session session = HibernateConfig.getFACTORY().openSession()) {
+            TypedQuery<Laptop> query = session.createQuery("FROM Laptop l WHERE l.trangThai =1");
+            listTtSp = query.getResultList();
+            session.close();
+        }
+        return listTtSp;
+    }
+    
+   
     public List<Laptop> findAllByName(String name) {
         List<Laptop> list = new ArrayList<>();
         try {
             Session session = HibernateConfig.getFACTORY().openSession();
-            String hql =" FROM Laptop l WHERE l.ten LIKE :name";
+            String hql =" FROM Laptop l WHERE l.ten LIKE :name AND trangThai =1";
             Query query = session.createQuery(hql);
             query.setParameter("name","%"+ name+"%");
             list = query.getResultList();

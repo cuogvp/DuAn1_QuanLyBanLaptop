@@ -66,10 +66,11 @@ public class QLHang extends javax.swing.JFrame {
         btnXoa = new javax.swing.JButton();
         btnClear = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setBackground(new java.awt.Color(204, 255, 255));
 
         jPanel1.setBackground(new java.awt.Color(204, 255, 255));
+        jPanel1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
         tblQLHang.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {

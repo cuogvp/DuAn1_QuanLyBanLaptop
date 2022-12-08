@@ -20,4 +20,7 @@ public interface ILaptopService {
     String deleteLaptopService(Laptop l);
     List<Laptop> findAllByName(String name);
     UUID findByIdHang(String ten);
+    List<Laptop> countLaptopByTrangThai();
+    List<Laptop> countLaptopByTrangThaiDBan();
+    List<Laptop> countLaptopByTrangThaiTon();
 }

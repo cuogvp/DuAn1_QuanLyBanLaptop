@@ -22,7 +22,7 @@ public class LaptopRepository {
     public List<Laptop> selectAll() {
         List<Laptop> listsp;
         try ( Session session = HibernateConfig.getFACTORY().openSession()) {
-            TypedQuery<Laptop> query = session.createQuery("FROM Laptop l");
+            TypedQuery<Laptop> query = session.createQuery("FROM Laptop l ORDER BY l.ma DESC");
             listsp = query.getResultList();
             session.close();
         }
@@ -49,7 +49,7 @@ public class LaptopRepository {
         boolean check = false;
         try (Session session = HibernateConfig.getFACTORY().openSession()) {
             transaction = session.beginTransaction();
-             session.saveOrUpdate(l);;
+             session.saveOrUpdate(l);
             transaction.commit();
             check = true;
 
@@ -97,5 +97,32 @@ public class LaptopRepository {
             e.printStackTrace();
         }
         return list;
+    }
+    public List<Laptop> countLaptopByTrangThai() {
+        List<Laptop> listsp;
+        try ( Session session = HibernateConfig.getFACTORY().openSession()) {
+            TypedQuery<Laptop> query = session.createQuery("FROM  Laptop l WHERE l.trangThai =1");
+            listsp = query.getResultList();
+            session.close();
+        }
+        return listsp;
+    }
+    public List<Laptop> countLaptopByTrangThaiDBan() {
+        List<Laptop> listsp;
+        try ( Session session = HibernateConfig.getFACTORY().openSession()) {
+            TypedQuery<Laptop> query = session.createQuery("FROM  Laptop l WHERE l.trangThai =0");
+            listsp = query.getResultList();
+            session.close();
+        }
+        return listsp;
+    }
+    public List<Laptop> countLaptopByTrangThaiTon() {
+        List<Laptop> listsp;
+        try ( Session session = HibernateConfig.getFACTORY().openSession()) {
+            TypedQuery<Laptop> query = session.createQuery("FROM  Laptop l WHERE l.trangThai =2");
+            listsp = query.getResultList();
+            session.close();
+        }
+        return listsp;
     }
 }

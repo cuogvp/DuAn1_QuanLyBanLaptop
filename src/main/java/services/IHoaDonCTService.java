@@ -4,6 +4,7 @@
  */
 package services;
 
+import java.math.BigDecimal;
 import java.util.List;
 import model.HoaDonChiTiet;
 
@@ -13,4 +14,8 @@ import model.HoaDonChiTiet;
  */
 public interface IHoaDonCTService {
     List<HoaDonChiTiet> getList();
+    BigDecimal doanhThuTheoNgay();
+    BigDecimal doanhThuTheoThang(int thang);
+    BigDecimal doanhThuTheoNam();
+    Boolean deleteHDCT(HoaDonChiTiet hdct);
 }

@@ -25,6 +25,7 @@ public interface IHoaDonService {
     public int genMaHD();
     List<HoaDonChiTiet> selectAllHoaDonChiTiet();
     Boolean addOrUpdateHDCT(HoaDonChiTiet hdct);
+    Boolean deleteHDCT(HoaDonChiTiet hdct);
     UUID findByIdLaptop(String ma);
     UUID findByIdHoaDon(String ma);
     List<HoaDonChiTiet> selectAllHoaDonChiTiet(String ma);

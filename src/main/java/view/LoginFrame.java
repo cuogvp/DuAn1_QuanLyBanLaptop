@@ -51,7 +51,7 @@ public class LoginFrame extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        btnDangKi = new javax.swing.JButton();
+        btnThoat = new javax.swing.JButton();
         btnDangNhap = new javax.swing.JButton();
         txtTaiKhoan = new javax.swing.JTextField();
         txtMatKhau = new javax.swing.JPasswordField();
@@ -104,9 +104,14 @@ public class LoginFrame extends javax.swing.JFrame {
         jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel4.setText("Mật khẩu");
 
-        btnDangKi.setBackground(new java.awt.Color(253, 254, 253));
-        btnDangKi.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        btnDangKi.setText("Đăng kí");
+        btnThoat.setBackground(new java.awt.Color(253, 254, 253));
+        btnThoat.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        btnThoat.setText("Thoát");
+        btnThoat.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnThoatActionPerformed(evt);
+            }
+        });
 
         btnDangNhap.setBackground(new java.awt.Color(253, 254, 253));
         btnDangNhap.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
@@ -162,7 +167,7 @@ public class LoginFrame extends javax.swing.JFrame {
                 .addGap(36, 36, 36)
                 .addComponent(btnDangNhap)
                 .addGap(50, 50, 50)
-                .addComponent(btnDangKi, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnThoat, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -190,7 +195,7 @@ public class LoginFrame extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 42, Short.MAX_VALUE)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnDangNhap, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnDangKi, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btnThoat, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(27, 27, 27)
                 .addComponent(jLabel6)
                 .addGap(16, 16, 16))
@@ -222,6 +227,13 @@ public class LoginFrame extends javax.swing.JFrame {
     private void txtTaiKhoanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtTaiKhoanActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtTaiKhoanActionPerformed
+
+    private void btnThoatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThoatActionPerformed
+        int check = JOptionPane.showConfirmDialog(this, "Bạn muốn thoát không?", "Thông báo", JOptionPane.YES_NO_OPTION);
+        if (check == JOptionPane.YES_OPTION) {
+            System.exit(0);
+        }
+    }//GEN-LAST:event_btnThoatActionPerformed
 
     /**
      * @param args the command line arguments
@@ -259,8 +271,8 @@ public class LoginFrame extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnDangKi;
     private javax.swing.JButton btnDangNhap;
+    private javax.swing.JButton btnThoat;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

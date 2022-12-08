@@ -7,6 +7,7 @@ package repository;
 import model.HoaDonChiTiet;
 import hibernateConfig.HibernateConfig;
 import hibernateConfig.JdbcUltil;
+import java.math.BigDecimal;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -31,5 +32,65 @@ public class HoaDonCTRepository {
             session.close();
         }
         return listHoaDonCT;
+        
+    }
+    public Boolean deleteHDCT(HoaDonChiTiet hdct) {
+        Transaction transaction = null;
+        boolean check = false;
+        try (Session session = HibernateConfig.getFACTORY().openSession()) {
+            transaction = session.beginTransaction();
+            session.delete(hdct);
+            transaction.commit();
+            check = true;
+
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            transaction.rollback();
+        }
+        return check;
+    }
+    // tin
+   public BigDecimal doanhThuTheoNgay(){
+        BigDecimal result = null;
+        Transaction transaction = null;
+        try ( Session session = HibernateConfig.getFACTORY().openSession()) {
+            transaction = session.beginTransaction();
+            Query query = session.createSQLQuery("SELECT SUM(HoaDonChitiet.SoLuong*DonGia) AS DoanhThu From HoaDonChiTiet\n"
+                    +"join HoaDon on HoaDonChiTiet.IDHoaDon = HoaDon.ID Where\n"
+                    + "HoaDonChitiet.SoLuong >0 AND HoaDonChitiet.TrangThai = 0\n"
+                    + "And DAY(HoaDon.NgayTao) = Day(GETDATE())");
+            result = (BigDecimal) query.getResultList().get(0);
+            transaction.commit();
+        }
+        return result;
+    }
+    
+    public BigDecimal doanhThuTheoThang(int thang){
+        BigDecimal result = null;
+        Transaction transaction = null;
+        try ( Session session = HibernateConfig.getFACTORY().openSession()) {
+            transaction = session.beginTransaction();
+            Query query = session.createSQLQuery("SELECT SUM(HoaDonChitiet.SoLuong*DonGia) AS DoanhThu From HoaDonChiTiet\n"
+                    +"join HoaDon on HoaDonChiTiet.IDHoaDon = HoaDon.ID Where\n"
+                    + "HoaDonChitiet.SoLuong >0 AND HoaDonChitiet.TrangThai = 0\n"
+                    + "And MONTH(HoaDon.NgayTao) = " +thang);
+            result = (BigDecimal) query.getResultList().get(0);
+            transaction.commit();
+        }
+        return result;
+    }
+    public BigDecimal doanhThuTheoNam(){
+        BigDecimal result = null;
+        Transaction transaction = null;
+        try ( Session session = HibernateConfig.getFACTORY().openSession()) {
+            transaction = session.beginTransaction();
+            Query query = session.createSQLQuery("SELECT SUM(HoaDonChitiet.SoLuong*DonGia) AS DoanhThu From HoaDonChiTiet\n"
+                    +"join HoaDon on HoaDonChiTiet.IDHoaDon = HoaDon.ID Where\n"
+                    + "HoaDonChitiet.SoLuong >0 AND HoaDonChitiet.TrangThai = 0\n"
+                    + "And YEAR(HoaDon.NgayTao )= YEAR(GETDATE())");
+            result = (BigDecimal) query.getResultList().get(0);
+            transaction.commit();
+        }
+        return result;
     }
 }

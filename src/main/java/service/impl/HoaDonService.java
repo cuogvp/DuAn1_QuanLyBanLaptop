@@ -95,6 +95,11 @@ public class HoaDonService implements IHoaDonService{
         return hoaDonRepo.selectAllHoaDonChiTiet(ma);
     }
 
+    @Override
+    public Boolean deleteHDCT(HoaDonChiTiet hdct) {
+        return hoaDonRepo.deleteHDCT(hdct);
+    }
+
     
     
 }

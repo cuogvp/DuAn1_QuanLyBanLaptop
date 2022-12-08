@@ -31,4 +31,11 @@ public class TTSPService implements ITTSPService {
     public Boolean update(Laptop l) {
         return ttspRepo.update(l);
     }
+
+    @Override
+    public List<Laptop> selectAllByTrangThai() {
+        return ttspRepo.selectAllByTrangThai();
+    }
+
+   
 }

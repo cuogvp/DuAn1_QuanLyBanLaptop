@@ -26,7 +26,7 @@ public class HoaDonRepository {
     public List<HoaDon> selectAll() {
         List<HoaDon> listhd;
         try (Session session = HibernateConfig.getFACTORY().openSession()) {
-            TypedQuery<HoaDon> query = session.createQuery("FROM HoaDon");
+            TypedQuery<HoaDon> query = session.createQuery("FROM HoaDon h ORDER BY h.ma DESC");
             listhd = query.getResultList();
             session.close();
         }
@@ -52,7 +52,21 @@ public class HoaDonRepository {
         }
         return listhdct;
     }
+    public Boolean deleteHDCT(HoaDonChiTiet hdct) {
+        Transaction transaction = null;
+        boolean check = false;
+        try (Session session = HibernateConfig.getFACTORY().openSession()) {
+            transaction = session.beginTransaction();
+            session.delete(hdct);
+            transaction.commit();
+            check = true;
 
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            transaction.rollback();
+        }
+        return check;
+    }
     public Boolean add(HoaDon hd) {
         Transaction transaction = null;
         boolean check = false;
