@@ -22,7 +22,7 @@ public class LaptopRepository {
     public List<Laptop> selectAll() {
         List<Laptop> listsp;
         try ( Session session = HibernateConfig.getFACTORY().openSession()) {
-            TypedQuery<Laptop> query = session.createQuery("FROM Laptop l");
+            TypedQuery<Laptop> query = session.createQuery("FROM Laptop l ORDER BY l.ma DESC");
             listsp = query.getResultList();
             session.close();
         }

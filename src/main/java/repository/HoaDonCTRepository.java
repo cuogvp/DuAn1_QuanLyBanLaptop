@@ -32,17 +32,33 @@ public class HoaDonCTRepository {
             session.close();
         }
         return listHoaDonCT;
+        
+    }
+    public Boolean deleteHDCT(HoaDonChiTiet hdct) {
+        Transaction transaction = null;
+        boolean check = false;
+        try (Session session = HibernateConfig.getFACTORY().openSession()) {
+            transaction = session.beginTransaction();
+            session.delete(hdct);
+            transaction.commit();
+            check = true;
+
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            transaction.rollback();
+        }
+        return check;
     }
     // tin
-    public BigDecimal doanhThuTheoNgay(){
+   public BigDecimal doanhThuTheoNgay(){
         BigDecimal result = null;
         Transaction transaction = null;
         try ( Session session = HibernateConfig.getFACTORY().openSession()) {
             transaction = session.beginTransaction();
             Query query = session.createSQLQuery("SELECT SUM(HoaDonChitiet.SoLuong*DonGia) AS DoanhThu From HoaDonChiTiet\n"
                     +"join HoaDon on HoaDonChiTiet.IDHoaDon = HoaDon.ID Where\n"
-                    + "HoaDonChitiet.SoLuong >0 AND HoaDonChitiet.TrangThai = 1\n"
-                    + "And DAY(HoaDon.NgayNhanHang) = Day(GETDATE())");
+                    + "HoaDonChitiet.SoLuong >0 AND HoaDonChitiet.TrangThai = 0\n"
+                    + "And DAY(HoaDon.NgayTao) = Day(GETDATE())");
             result = (BigDecimal) query.getResultList().get(0);
             transaction.commit();
         }
@@ -56,8 +72,8 @@ public class HoaDonCTRepository {
             transaction = session.beginTransaction();
             Query query = session.createSQLQuery("SELECT SUM(HoaDonChitiet.SoLuong*DonGia) AS DoanhThu From HoaDonChiTiet\n"
                     +"join HoaDon on HoaDonChiTiet.IDHoaDon = HoaDon.ID Where\n"
-                    + "HoaDonChitiet.SoLuong >0 AND HoaDonChitiet.TrangThai = 1\n"
-                    + "And MONTH(HoaDon.NgayNhanHang) = " +thang);
+                    + "HoaDonChitiet.SoLuong >0 AND HoaDonChitiet.TrangThai = 0\n"
+                    + "And MONTH(HoaDon.NgayTao) = " +thang);
             result = (BigDecimal) query.getResultList().get(0);
             transaction.commit();
         }
@@ -70,8 +86,8 @@ public class HoaDonCTRepository {
             transaction = session.beginTransaction();
             Query query = session.createSQLQuery("SELECT SUM(HoaDonChitiet.SoLuong*DonGia) AS DoanhThu From HoaDonChiTiet\n"
                     +"join HoaDon on HoaDonChiTiet.IDHoaDon = HoaDon.ID Where\n"
-                    + "HoaDonChitiet.SoLuong >0 AND HoaDonChitiet.TrangThai = 1\n"
-                    + "And YEAR(HoaDon.NgayNhanHang )= YEAR(GETDATE())");
+                    + "HoaDonChitiet.SoLuong >0 AND HoaDonChitiet.TrangThai = 0\n"
+                    + "And YEAR(HoaDon.NgayTao )= YEAR(GETDATE())");
             result = (BigDecimal) query.getResultList().get(0);
             transaction.commit();
         }

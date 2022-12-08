@@ -17,4 +17,5 @@ public interface IHoaDonCTService {
     BigDecimal doanhThuTheoNgay();
     BigDecimal doanhThuTheoThang(int thang);
     BigDecimal doanhThuTheoNam();
+    Boolean deleteHDCT(HoaDonChiTiet hdct);
 }

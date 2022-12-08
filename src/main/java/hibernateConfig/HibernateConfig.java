@@ -35,7 +35,7 @@ public class HibernateConfig {
         properties.put(Environment.URL, "jdbc:sqlserver://localhost:1433;databaseName=duAn1_laptop");
         properties.put(Environment.USER, "sa");
         properties.put(Environment.PASS, "123456");
-        properties.put(Environment.SHOW_SQL, "true");
+        properties.put(Environment.SHOW_SQL, "false");
         //gen DB tự động
 //        properties.put(Environment.HBM2DDL_AUTO, "create");// tạo bảng trong sql
          

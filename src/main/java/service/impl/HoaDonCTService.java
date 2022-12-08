@@ -22,7 +22,7 @@ public class HoaDonCTService implements IHoaDonCTService{
         return repository.selectAll();
     }
 
-    @Override
+   @Override
     public BigDecimal doanhThuTheoNgay() {
         return repository.doanhThuTheoNgay();
     }
@@ -35,6 +35,11 @@ public class HoaDonCTService implements IHoaDonCTService{
     @Override
     public BigDecimal doanhThuTheoNam() {
         return repository.doanhThuTheoNam();
+    }
+
+    @Override
+    public Boolean deleteHDCT(HoaDonChiTiet hdct) {
+        return this.repository.deleteHDCT(hdct);
     }
     
 }

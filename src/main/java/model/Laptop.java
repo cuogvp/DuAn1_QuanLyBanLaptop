@@ -285,7 +285,7 @@ public class Laptop {
 
     @Override
     public String toString() {
-        return ten ;
+        return ma ;
     }
    
    

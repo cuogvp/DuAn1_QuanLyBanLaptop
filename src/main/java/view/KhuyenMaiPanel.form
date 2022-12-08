@@ -70,7 +70,7 @@
                               <Component id="txtNgayBD" max="32767" attributes="0"/>
                               <Component id="txtNgayHH" max="32767" attributes="0"/>
                               <Component id="txtGiaTien" max="32767" attributes="0"/>
-                              <Component id="cboTenSP" pref="164" max="32767" attributes="0"/>
+                              <Component id="cboMaSP" pref="164" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                   </Group>
@@ -137,7 +137,7 @@
                           <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="jLabel7" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="cboTenSP" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="cboMaSP" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace min="-2" pref="73" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
@@ -263,17 +263,17 @@
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel7">
           <Properties>
-            <Property name="text" type="java.lang.String" value="T&#xea;n S&#x1ea3;n Ph&#x1ea9;m"/>
+            <Property name="text" type="java.lang.String" value="Ma SP"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JComboBox" name="cboTenSP">
+        <Component class="javax.swing.JComboBox" name="cboMaSP">
           <Properties>
             <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
               <StringArray count="0"/>
             </Property>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cboTenSPActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cboMaSPActionPerformed"/>
           </Events>
           <AuxValues>
             <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
